@@ -1,6 +1,7 @@
 from ideaToText import Decision
 
-class Hello_world(Decision):
+
+class HelloWorld(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure',{
             '''import acm.graphics.*;

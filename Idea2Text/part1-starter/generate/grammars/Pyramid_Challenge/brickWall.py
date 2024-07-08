@@ -1,39 +1,32 @@
 from ideaToText import Decision
 
 
-class Perfect(Decision):
+class BrickWall(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''import acm.graphics.*;
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawPyramidStructure extends GraphicsProgram {
+public class DrawBrickWallStructure extends GraphicsProgram {
     public void run() {
         // Set canvas size
-        {Set_Canvas_Size_Pyramid}
+        {Set_Canvas_Size_Brick_Wall}
 
         // Initialize structure parameters
-        {Initialize_Structure_Parameters_Pyramid}
+        {Initialize_Structure_Parameters_Brick_Wall}
 
-        // Draw a pyramid
-        for (int i = 0; i < BRICKS_IN_BASE; i++) {
-            // Calculate row variables
-            int nBricks = BRICKS_IN_BASE - i;
-            int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = (getWidth() - rowWidth) / 2.0;
-
-            // Draw a single row
-            for (int j = 0; j < nBricks; j++) {
-                // Add a single brick
-                double x = rowX + j * BRICK_WIDTH;
-                GRect brick = new GRect(x, rowY, BRICK_WIDTH, BRICK_HEIGHT);
+        // Draw rows of bricks covering the entire screen without offset
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLUMNS; col++) {
+                int x = col * BRICK_WIDTH;
+                int y = row * BRICK_HEIGHT;
+                GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
                 {Set_Brick_Filled}
 
-                brick.setColor({Brick_Color_Pyramid});
+                brick.setColor({Brick_Color_Brick_Wall});
                 add(brick);
             }
         }
@@ -41,7 +34,7 @@ public class DrawPyramidStructure extends GraphicsProgram {
 
     public static void main(String[] args) {
         // Start the GraphicsProgram
-        new DrawPyramidStructure().start(args);
+        new DrawBrickWallStructure().start(args);
     }
 }''': 1
         })
@@ -50,7 +43,7 @@ public class DrawPyramidStructure extends GraphicsProgram {
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Pyramid(Decision):
+class Set_Canvas_Size_Brick_Wall(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '600': 1
@@ -63,33 +56,36 @@ class Set_Canvas_Size_Pyramid(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Structure_Parameters_Pyramid(Decision):
+class Initialize_Structure_Parameters_Brick_Wall(Decision):
     def registerChoices(self):
-        self.addChoice('bricksInBase', {
-            '14': 5,
-            '13': 4,
-            '12': 3,
-            '11': 2,
-            '10': 1
-        })
         self.addChoice('brickWidth', {
-            '40': 4,
+            '40': 3,
+            '60': 1,
             '80': 1
         })
         self.addChoice('brickHeight', {
-            '20': 4,
+            '20': 3,
+            '10': 1,
             '40': 1
         })
 
     def render(self):
-        bricksInBase = int(self.getChoice('bricksInBase'))
-        brickWidth = self.getChoice('brickWidth')
-        brickHeight = self.getChoice('brickHeight')
+        brickWidth = int(self.getChoice('brickWidth'))
+        brickHeight = int(self.getChoice('brickHeight'))
+
+        canvasWidth = 600
+        canvasHeight = 400
+
+        numColumns = canvasWidth // brickWidth
+        numRows = canvasHeight // brickHeight
 
         return '\n'.join([
-            'int BRICKS_IN_BASE = {};'.format(bricksInBase),
+            'int NUM_COLUMNS = {};'.format(numColumns),
+            'int NUM_ROWS = {};'.format(numRows),
             'int BRICK_WIDTH = {};'.format(brickWidth),
-            'int BRICK_HEIGHT = {};'.format(brickHeight)
+            'int BRICK_HEIGHT = {};'.format(brickHeight),
+            'int BRICK_SEP = 0;',
+            'int ROW_SEP = 0;'
         ])
 
 
@@ -97,14 +93,14 @@ class Set_Brick_Filled(Decision):
     def registerChoices(self):
         self.addChoice('brickFilled', {
             'brick.setFilled(true);': 1,
-            '// Not filled': 5
+            '// not filled': 5
         })
 
     def render(self):
         return self.getChoice('brickFilled')
 
 
-class Brick_Color_Pyramid(Decision):
+class Brick_Color_Brick_Wall(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 1,

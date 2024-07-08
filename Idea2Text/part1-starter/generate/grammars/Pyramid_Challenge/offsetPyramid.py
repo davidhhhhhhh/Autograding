@@ -1,14 +1,13 @@
 from ideaToText import Decision
 
-
-class Perfect(Decision):
+class OffsetPyramid(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''import acm.graphics.*;
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawPyramidStructure extends GraphicsProgram {
+public class DrawOffsetPyramidStructure extends GraphicsProgram {
     public void run() {
         // Set canvas size
         {Set_Canvas_Size_Pyramid}
@@ -16,13 +15,16 @@ public class DrawPyramidStructure extends GraphicsProgram {
         // Initialize structure parameters
         {Initialize_Structure_Parameters_Pyramid}
 
+        // Optionally add centering assist lines
+        {Add_Centering_Assist_Lines}
+
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = (getWidth() - rowWidth) / 2.0;
+            double rowY = OFFSET_Y + getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = OFFSET_X + (getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {
@@ -41,7 +43,7 @@ public class DrawPyramidStructure extends GraphicsProgram {
 
     public static void main(String[] args) {
         // Start the GraphicsProgram
-        new DrawPyramidStructure().start(args);
+        new DrawOffsetPyramidStructure().start(args);
     }
 }''': 1
         })
@@ -80,24 +82,52 @@ class Initialize_Structure_Parameters_Pyramid(Decision):
             '20': 4,
             '40': 1
         })
+        self.addChoice('offsetX', {
+            '50': 2,
+            '-50': 1,
+            '-100': 1,
+            '100': 1
+        })
+        self.addChoice('offsetY', {
+            '50': 1,
+            '-50': 1,
+            '-100': 1,
+            '100': 1
+        })
 
     def render(self):
         bricksInBase = int(self.getChoice('bricksInBase'))
         brickWidth = self.getChoice('brickWidth')
         brickHeight = self.getChoice('brickHeight')
+        offsetX = self.getChoice('offsetX')
+        offsetY = self.getChoice('offsetY')
 
         return '\n'.join([
             'int BRICKS_IN_BASE = {};'.format(bricksInBase),
             'int BRICK_WIDTH = {};'.format(brickWidth),
-            'int BRICK_HEIGHT = {};'.format(brickHeight)
+            'int BRICK_HEIGHT = {};'.format(brickHeight),
+            'int OFFSET_X = {};'.format(offsetX),
+            'int OFFSET_Y = {};'.format(offsetY)
         ])
+
+
+class Add_Centering_Assist_Lines(Decision):
+    def registerChoices(self):
+        self.addChoice('centeringAssistLines', {
+            'add(new GLine(getWidth() / 2, 0, getWidth() / 2, getHeight()));': 1,
+            'add(new GLine(0, getHeight() / 2, getWidth(), getHeight() / 2));': 1,
+            '// No assist lines by default': 5
+        })
+
+    def render(self):
+        return self.getChoice('centeringAssistLines')
 
 
 class Set_Brick_Filled(Decision):
     def registerChoices(self):
         self.addChoice('brickFilled', {
             'brick.setFilled(true);': 1,
-            '// Not filled': 5
+            'brick.setFilled(false);': 5
         })
 
     def render(self):

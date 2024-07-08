@@ -34,19 +34,19 @@ class Start(Decision):
     def render(self):
         # Mapping choices to their corresponding expanded code
         choice_mapping = {
-            'hello_world': 'Hello_world',
-            'single_row': 'Single_row',
+            'hello_world': 'HelloWorld',
+            'single_row': 'SingleRow',
             'diagonal': 'Diagonal',
-            'two_row': 'Two_row',
+            'two_row': 'TwoRows',
             'rectangle': 'Rectangle',
             'parallelogram': 'Parallelogram',
-            'right_triangle': 'Right_triangle',
-            'column_structure': 'Column_structure',
-            'scalene_triangle': 'Scalene_triangle',
-            'pyramid_like': 'Pyramid_like',
-            'offset_pyramid': 'Offset_pyramid',
+            'right_triangle': 'RightTriangle',
+            'column_structure': 'ColumnStructure',
+            'scalene_triangle': 'ScaleneTriangle',
+            'pyramid_like': 'PyramidLike',
+            'offset_pyramid': 'OffsetPyramid',
             'perfect': 'Perfect',
-            'brick_wall': 'Brick_wall'
+            'brick_wall': 'BrickWall'
         }
 
         strategy = self.getChoice('strategies')

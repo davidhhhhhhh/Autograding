@@ -1,36 +1,25 @@
 from ideaToText import Decision
 
 
-class Diagonal(Decision):
+class SingleRow(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''import acm.graphics.*;
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawBrickPattern extends GraphicsProgram {
+public class DrawBrickRow extends GraphicsProgram {
     public void run() {
         // Set canvas size
-        {Set_Canvas_Size_Diagonal}
+        {Set_Canvas_Size_SingleRow}
 
-        // Initialize brick parameters
-        {Initialize_Brick_Parameters_Diagonal}
+        // Initialize starting position and other parameters
+        {Initialize_Brick_Parameters_SingleRow}
 
         // Draw bricks
         for (int i = 0; i < NUM_BRICKS; i++) {
-            int x = START_X;
-            int y = START_Y;
-            if (isDiagonal) {
-                if (isUpRight) {
-                    x += i * (BRICK_WIDTH + BRICK_SEP);
-                    y -= i * (BRICK_HEIGHT + BRICK_SEP);
-                } else {
-                    x -= i * (BRICK_WIDTH + BRICK_SEP);
-                    y -= i * (BRICK_HEIGHT + BRICK_SEP);
-                }
-            } else {
-                y += i * (BRICK_HEIGHT + BRICK_SEP);
-            }
+            int x = i * (BRICK_WIDTH + BRICK_SEP);
+            int y = START_Y - BRICK_HEIGHT / 2;
             GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
             // Add a rogue brick condition
@@ -38,8 +27,7 @@ public class DrawBrickPattern extends GraphicsProgram {
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setFilled(true);
-                brick.setColor({Brick_Color_Diagonal});
+                brick.setColor({Brick_Color_SingleRow});
             }
 
             add(brick);
@@ -48,7 +36,7 @@ public class DrawBrickPattern extends GraphicsProgram {
 
     public static void main(String[] args) {
         // Start the GraphicsProgram
-        new DrawBrickPattern().start(args);
+        new DrawBrickRow().start(args);
     }
 }''': 1
         })
@@ -57,7 +45,7 @@ public class DrawBrickPattern extends GraphicsProgram {
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Diagonal(Decision):
+class Set_Canvas_Size_SingleRow(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
@@ -65,15 +53,15 @@ class Set_Canvas_Size_Diagonal(Decision):
         })
         self.addChoice('canvasHeight', {
             '200 + 60': 3,
-            '400': 1,
-            '600': 1
+            '200': 1,
+            '300': 1
         })
 
     def render(self):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Brick_Parameters_Diagonal(Decision):
+class Initialize_Brick_Parameters_SingleRow(Decision):
     def registerChoices(self):
         self.addChoice('numBricks', {
             'int NUM_BRICKS = 3;': 2,
@@ -93,7 +81,7 @@ class Initialize_Brick_Parameters_Diagonal(Decision):
         })
         self.addChoice('brickSeparation', {
             'int BRICK_SEP = 5;': 1,
-            'int BRICK_SEP = 0;': 5,
+            'int BRICK_SEP = 0;': 3,
             'int BRICK_SEP = 10;': 1
         })
         self.addChoice('rogueBrickIndex', {
@@ -101,25 +89,11 @@ class Initialize_Brick_Parameters_Diagonal(Decision):
             'int ROGUE_BRICK_INDEX = 1;': 1,  # Rogue brick at position 1
             'int ROGUE_BRICK_INDEX = 2;': 1  # Rogue brick at position 2
         })
-        self.addChoice('startXPosition', {
-            'int START_X = 50;': 2,
-            'int START_X = 100;': 1,
-            'int START_X = -50;': 1
-        })
         self.addChoice('startYPosition', {
-            'int START_Y = 50;': 2,
-            'int START_Y = 100;': 1,
-            'int START_Y = -100;': 1,
-            'int START_Y = getHeight() - 20;': 1,
-            'int START_Y = getHeight() + 60;': 5
-        })
-        self.addChoice('isDiagonal', {
-            'boolean isDiagonal = true;': 2,
-            'boolean isDiagonal = false;': 1
-        })
-        self.addChoice('isUpRight', {
-            'boolean isUpRight = true;': 1,
-            'boolean isUpRight = false;': 1
+            'int START_Y = getHeight() - 20;': 3,  # High probability to start at the bottom
+            'int START_Y = getHeight() / 2;': 1,
+            'int START_Y = 40;': 1,
+            'int START_Y = -40;': 1
         })
 
     def render(self):
@@ -129,14 +103,11 @@ class Initialize_Brick_Parameters_Diagonal(Decision):
             'int BRICK_HEIGHT = {};'.format(self.getChoice('brickHeight')),
             self.getChoice('brickSeparation'),
             self.getChoice('rogueBrickIndex'),
-            self.getChoice('startXPosition'),
-            self.getChoice('startYPosition'),
-            self.getChoice('isDiagonal'),
-            self.getChoice('isUpRight')
+            self.getChoice('startYPosition')
         ])
 
 
-class Brick_Color_Diagonal(Decision):
+class Brick_Color_SingleRow(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,
@@ -144,8 +115,7 @@ class Brick_Color_Diagonal(Decision):
             'Color.GREEN': 1,
             'Color.YELLOW': 1,
             'Color.ORANGE': 1,
-            'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.MAGENTA': 1
         })
 
     def render(self):
