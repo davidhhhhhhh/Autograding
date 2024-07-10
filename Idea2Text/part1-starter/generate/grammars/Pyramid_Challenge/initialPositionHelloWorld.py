@@ -1,16 +1,16 @@
 from ideaToText import Decision
 
-class Initial_Position_Hello_World(Decision):
+class InitialPositionHelloWorld(Decision):
     def registerChoices(self):
         self.addChoice('initialPointLocation', {
-            '{On_Canvas_Positions}': 3,
-            '{Off_Canvas_Positions}': 1
+            '{OnCanvasPositions}': 3,
+            '{OffCanvasPositions}': 1
         })
 
     def render(self):
-        return self.expand('initialPointLocation')
+        return self.getChoice('initialPointLocation')
 
-class On_Canvas_Positions(Decision):
+class OnCanvasPositions(Decision):
     def registerChoices(self):
         self.addChoice('onCanvasPosition', {
             'int x = 50; int y = 50;': 3,
@@ -24,7 +24,7 @@ class On_Canvas_Positions(Decision):
     def render(self):
         return self.getChoice('onCanvasPosition')
 
-class Off_Canvas_Positions(Decision):
+class OffCanvasPositions(Decision):
     def registerChoices(self):
         self.addChoice('offCanvasPosition', {
             'int x = -50; int y = -50;': 1,

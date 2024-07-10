@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class PyramidLike(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -9,65 +8,72 @@ import acm.program.*;
 import java.awt.Color;
 import java.util.Random;
 
-public class DrawRoughlySymmetricStructure extends GraphicsProgram {
-    public void run() {
+public class DrawRoughlySymmetricStructure extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_Roughly_Symmetric}
+        {SetCanvasSizeRoughlySymmetric}
 
         // Initialize structure parameters
-        {Initialize_Structure_Parameters_Roughly_Symmetric}
+        {InitializeStructureParametersRoughlySymmetric}
+        
+        // Convert String to int array 
+        String[] stringArray = input.split(",");
+        int[] NUM_BRICKS = new int[stringArray.length];
+        for (int i = 0; i < stringArray.length; i++) {{
+            NUM_BRICKS[i] = Integer.parseInt(stringArray[i].trim());
+        }}
 
         Random rand = new Random();
 
         // Draw rows of bricks with horizontal offset
-        for (int row = 0; row < NUM_ROWS; row++) {
+        for (int row = 0; row < NUM_ROWS; row++) {{
             int initialX = START_X + row * HORIZONTAL_OFFSET;
-            for (int i = 0; i < NUM_BRICKS[row]; i++) {
+            for (int i = 0; i < NUM_BRICKS[row]; i++) {{
                 int x = initialX + i * (BRICK_WIDTH + BRICK_SEP);
                 int y = START_Y + row * (BRICK_HEIGHT + ROW_SEP);
 
                 // Randomly decide if there is a hole (missing brick)
                 boolean hasHole = (rand.nextInt(10) < HOLE_PROBABILITY);
 
-                if (!hasHole) {
+                if (!hasHole) {{
                     GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                     // Determine if the brick is filled
-                    {Set_Brick_Filled}
+                    {SetBrickFilled}
 
                     // Add a rogue row/diagonal condition
-                    if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                        {Set_Rogue_Brick_Filled}
+                    if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
+                        {SetRogueBrickFilled}
                         brick.setColor(Color.RED);
-                    } else {
-                        brick.setColor({Brick_Color_Roughly_Symmetric});
-                    }
+                    }} else {{
+                        brick.setColor({BrickColorRoughlySymmetric});
+                    }}
 
                     add(brick);
-                }
-            }
-        }
-    }
+                }}
+            }}
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawRoughlySymmetricStructure().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Roughly_Symmetric(Decision):
+class SetCanvasSizeRoughlySymmetric(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '400': 1,
             '600': 1
         })
@@ -76,7 +82,7 @@ class Set_Canvas_Size_Roughly_Symmetric(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Structure_Parameters_Roughly_Symmetric(Decision):
+class InitializeStructureParametersRoughlySymmetric(Decision):
     def registerChoices(self):
         self.addChoice('startX', {
             'int START_X = 50;': 1,
@@ -147,8 +153,8 @@ class Initialize_Structure_Parameters_Roughly_Symmetric(Decision):
         numBricksStr = ', '.join(map(str, numBricks))
 
         return '\n'.join([
-            'int START_X = {}'.format(start_x),
-            'int START_Y = {}'.format(start_y),
+            '{}'.format(start_x),
+            '{}'.format(start_y),
             'int NUM_ROWS = {};'.format(numRows),
             'int BRICK_WIDTH = {};'.format(brickWidth),
             'int BRICK_HEIGHT = {};'.format(brickHeight),
@@ -157,33 +163,11 @@ class Initialize_Structure_Parameters_Roughly_Symmetric(Decision):
             'int HORIZONTAL_OFFSET = {};'.format(horizontalOffset),
             'int HOLE_PROBABILITY = {};'.format(holeProbability),
             'boolean isUpsideDown = {};'.format(isUpsideDown),
-            'int[] NUM_BRICKS = {{{}}};'.format(numBricksStr)
+            'String input = "{}";'.format(numBricksStr)
         ])
 
 
-class Set_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('brickFilled', {
-            'brick.setFilled(false);': 3,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('brickFilled')
-
-
-class Set_Rogue_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('rogueBrickFilled', {
-            'brick.setFilled(false);': 3,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('rogueBrickFilled')
-
-
-class Brick_Color_Roughly_Symmetric(Decision):
+class BrickColorRoughlySymmetric(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,

@@ -1,6 +1,6 @@
 from ideaToText import Decision
 
-class OffsetPyramid(Decision):
+class OffsetExtra(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''import acm.graphics.*;
@@ -34,6 +34,8 @@ public class DrawOffsetPyramidStructure extends GraphicsProgram {{
 
                 // Determine if the brick is filled
                 {SetBrickFilled}
+
+                brick.setColor({BrickColorPyramidExtra});
                 add(brick);
             }}
         }}
@@ -50,13 +52,16 @@ public class DrawOffsetPyramidStructure extends GraphicsProgram {{
         return self.getChoice('codeStructure')
 
 
-class AddCenteringAssistLines(Decision):
+class BrickColorPyramidExtra(Decision):
     def registerChoices(self):
-        self.addChoice('centeringAssistLines', {
-            'add(new GLine(getWidth() / 2, 0, getWidth() / 2, getHeight()));': 1,
-            'add(new GLine(0, getHeight() / 2, getWidth(), getHeight() / 2));': 1,
-            '// No assist lines by default': 5
+        self.addChoice('brickColor', {
+            'Color.GRAY': 1,
+            'Color.BLUE': 1,
+            'Color.GREEN': 1,
+            'Color.YELLOW': 1,
+            'Color.ORANGE': 1,
+            'Color.MAGENTA': 1
         })
 
     def render(self):
-        return self.getChoice('centeringAssistLines')
+        return self.getChoice('brickColor')

@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class Parallelogram(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,57 +7,57 @@ class Parallelogram(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawParallelogramStructure extends GraphicsProgram {
-    public void run() {
+public class DrawParallelogramStructure extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_Parallelogram}
+        {SetCanvasSizeParallelogram}
 
         // Initialize brick parameters for rows
-        {Initialize_Brick_Parameters_Parallelogram}
+        {InitializeBrickParametersParallelogram}
 
         // Draw rows of bricks with horizontal offset
-        for (int row = 0; row < NUM_ROWS; row++) {
+        for (int row = 0; row < NUM_ROWS; row++) {{
             int initialX = START_X + row * OFFSET;
-            for (int i = 0; i < NUM_BRICKS_PER_ROW; i++) {
+            for (int i = 0; i < NUM_BRICKS_PER_ROW; i++) {{
                 int x = initialX + i * (BRICK_WIDTH + BRICK_SEP);
                 int y = START_Y + row * (BRICK_HEIGHT + ROW_SEP);
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                {Set_Brick_Filled}
+                {SetBrickFilled}
 
                 // Add a rogue row/diagonal condition
-                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    {Set_Rogue_Brick_Filled}
+                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
+                    {SetRogueBrickFilled}
                     brick.setColor(Color.RED);
-                } else {
-                    brick.setColor({Brick_Color_Parallelogram});
-                }
+                }} else {{
+                    brick.setColor({BrickColorParallelogram});
+                }}
 
                 add(brick);
-            }
-        }
-    }
+            }}
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawParallelogramStructure().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Parallelogram(Decision):
+class SetCanvasSizeParallelogram(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '400': 1,
             '600': 1
         })
@@ -67,7 +66,7 @@ class Set_Canvas_Size_Parallelogram(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Brick_Parameters_Parallelogram(Decision):
+class InitializeBrickParametersParallelogram(Decision):
     def registerChoices(self):
         self.addChoice('numRows', {
             'int NUM_ROWS = 3;': 1,
@@ -139,9 +138,9 @@ class Initialize_Brick_Parameters_Parallelogram(Decision):
 
     def render(self):
         return '\n'.join([
-            'int NUM_ROWS = {};'.format(self.getChoice('numRows')),
-            'int NUM_BRICKS_PER_ROW = {};'.format(self.getChoice('numBricksPerRow')),
-            'int OFFSET = {};'.format(self.getChoice('offset')),
+            '{};'.format(self.getChoice('numRows')),
+            '{};'.format(self.getChoice('numBricksPerRow')),
+            '{};'.format(self.getChoice('offset')),
             'int BRICK_WIDTH = {};'.format(self.getChoice('brickWidth')),
             'int BRICK_HEIGHT = {};'.format(self.getChoice('brickHeight')),
             self.getChoice('brickSeparation'),
@@ -155,29 +154,7 @@ class Initialize_Brick_Parameters_Parallelogram(Decision):
         ])
 
 
-class Set_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('brickFilled', {
-            'brick.setFilled(false);': 3,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('brickFilled')
-
-
-class Set_Rogue_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('rogueBrickFilled', {
-            'brick.setFilled(false);': 3,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('rogueBrickFilled')
-
-
-class Brick_Color_Parallelogram(Decision):
+class BrickColorParallelogram(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,

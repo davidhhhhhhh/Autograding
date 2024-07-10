@@ -21,7 +21,9 @@ class Start(Decision):
             'scalene_triangle': 1,
             'pyramid_like': 1,
             'offset_pyramid': 1,
+            'offset_extra': 1,
             'perfect': 1,
+            'perfect_extra': 1,
             'brick_wall': 1,
         })
 
@@ -46,7 +48,9 @@ class Start(Decision):
             'pyramid_like': 'PyramidLike',
             'offset_pyramid': 'OffsetPyramid',
             'perfect': 'Perfect',
-            'brick_wall': 'BrickWall'
+            'brick_wall': 'BrickWall',
+            'offset_extra': 'OffsetExtra',
+            'perfect_extra': 'PerfectExtra'
         }
 
         strategy = self.getChoice('strategies')

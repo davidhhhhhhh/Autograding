@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class SingleRow(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,51 +7,51 @@ class SingleRow(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawBrickRow extends GraphicsProgram {
-    public void run() {
+public class DrawBrickRow extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_SingleRow}
+        {SetCanvasSizeSingleRow}
 
         // Initialize starting position and other parameters
-        {Initialize_Brick_Parameters_SingleRow}
+        {InitializeBrickParametersSingleRow}
 
         // Draw bricks
-        for (int i = 0; i < NUM_BRICKS; i++) {
+        for (int i = 0; i < NUM_BRICKS; i++) {{
             int x = i * (BRICK_WIDTH + BRICK_SEP);
             int y = START_Y - BRICK_HEIGHT / 2;
             GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
             // Add a rogue brick condition
-            if (i == ROGUE_BRICK_INDEX) {
+            if (i == ROGUE_BRICK_INDEX) {{
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
-            } else {
-                brick.setColor({Brick_Color_SingleRow});
-            }
+            }} else {{
+                brick.setColor({BrickColorSingleRow});
+            }}
 
             add(brick);
-        }
-    }
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawBrickRow().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_SingleRow(Decision):
+class SetCanvasSizeSingleRow(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '200': 1,
             '300': 1
         })
@@ -61,7 +60,7 @@ class Set_Canvas_Size_SingleRow(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Brick_Parameters_SingleRow(Decision):
+class InitializeBrickParametersSingleRow(Decision):
     def registerChoices(self):
         self.addChoice('numBricks', {
             'int NUM_BRICKS = 3;': 2,
@@ -107,7 +106,7 @@ class Initialize_Brick_Parameters_SingleRow(Decision):
         ])
 
 
-class Brick_Color_SingleRow(Decision):
+class BrickColorSingleRow(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,

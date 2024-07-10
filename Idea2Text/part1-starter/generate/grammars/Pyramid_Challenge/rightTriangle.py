@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class RightTriangle(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,57 +7,64 @@ class RightTriangle(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawRightTriangleStructure extends GraphicsProgram {
-    public void run() {
+public class DrawRightTriangleStructure extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_RightTriangle}
+        {SetCanvasSizeRightTriangle}
 
         // Determine the shape and initialize parameters
-        {Initialize_Shape_Parameters_RightTriangle}
+        {InitializeShapeParametersRightTriangle}
+        
+        // Convert String to int array 
+        String[] stringArray = input.split(",");
+        int[] NUM_BRICKS = new int[stringArray.length];
+        for (int i = 0; i < stringArray.length; i++) {{
+            NUM_BRICKS[i] = Integer.parseInt(stringArray[i].trim());
+        }}
 
         // Draw rows of bricks
-        for (int row = 0; row < NUM_ROWS; row++) {
+        for (int row = 0; row < NUM_ROWS; row++) {{
             int numBricks = NUM_BRICKS[row];
-            for (int i = 0; i < numBricks; i++) {
+            for (int i = 0; i < numBricks; i++) {{
                 int x = START_X + i * (BRICK_WIDTH + BRICK_SEP);
                 int y = START_Y + row * (BRICK_HEIGHT + ROW_SEP);
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                {Set_Brick_Filled}
+                {SetBrickFilled}
 
                 // Add a rogue row/diagonal condition
-                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    {Set_Rogue_Brick_Filled}
+                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
+                    {SetRogueBrickFilled}
                     brick.setColor(Color.RED);
-                } else {
-                    brick.setColor({Brick_Color_RightTriangle});
-                }
+                }} else {{
+                    brick.setColor({BrickColorRightTriangle});
+                }}
 
                 add(brick);
-            }
-        }
-    }
+            }}
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawRightTriangleStructure().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_RightTriangle(Decision):
+class SetCanvasSizeRightTriangle(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '400': 1,
             '600': 1
         })
@@ -67,7 +73,7 @@ class Set_Canvas_Size_RightTriangle(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Shape_Parameters_RightTriangle(Decision):
+class InitializeShapeParametersRightTriangle(Decision):
     def registerChoices(self):
         self.addChoice('shape', {
             'rightTriangle': 2,
@@ -136,8 +142,8 @@ class Initialize_Shape_Parameters_RightTriangle(Decision):
         numBricksStr = ', '.join(map(str, numBricks))
 
         return '\n'.join([
-            'int START_X = {}'.format(start_x),
-            'int START_Y = {}'.format(start_y),
+            '{}'.format(start_x),
+            '{}'.format(start_y),
             'int NUM_ROWS = {};'.format(numRows),
             'int NUM_BRICKS_BASE = {};'.format(numBricksBase),
             'int BRICK_WIDTH = {};'.format(brickWidth),
@@ -146,33 +152,10 @@ class Initialize_Shape_Parameters_RightTriangle(Decision):
             'int ROW_SEP = {};'.format(rowSeparation),
             'boolean isUpsideDown = {};'.format(isUpsideDown),
             'boolean isRightTriangle = {};'.format('true' if shape == 'rightTriangle' else 'false'),
-            'int[] NUM_BRICKS = {{{}}};'.format(numBricksStr)
+            'String input = "{}";'.format(numBricksStr)
         ])
 
-
-class Set_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('brickFilled', {
-            'brick.setFilled(false);': 5,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('brickFilled')
-
-
-class Set_Rogue_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('rogueBrickFilled', {
-            'brick.setFilled(false);': 5,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('rogueBrickFilled')
-
-
-class Brick_Color_RightTriangle(Decision):
+class BrickColorRightTriangle(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,

@@ -1,6 +1,6 @@
 from ideaToText import Decision
 
-class Perfect(Decision):
+class PerfectExtra(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''import acm.graphics.*;
@@ -32,6 +32,7 @@ public class DrawPyramidStructure extends GraphicsProgram {{
                 // Determine if the brick is filled
                 {SetBrickFilled}
 
+                brick.setColor({BrickColorPyramidExtra});
                 add(brick);
             }}
         }}
@@ -46,46 +47,3 @@ public class DrawPyramidStructure extends GraphicsProgram {{
 
     def render(self):
         return self.getChoice('codeStructure')
-
-
-class SetCanvasSizePyramid(Decision):
-    def registerChoices(self):
-        self.addChoice('canvasWidth', {
-            '600': 1
-        })
-        self.addChoice('canvasHeight', {
-            '400': 1
-        })
-
-    def render(self):
-        return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
-
-
-class InitializeStructureParametersPyramid(Decision):
-    def registerChoices(self):
-        self.addChoice('bricksInBase', {
-            '14': 5,
-            '13': 4,
-            '12': 3,
-            '11': 2,
-            '10': 1
-        })
-        self.addChoice('brickWidth', {
-            '40': 4,
-            '80': 1
-        })
-        self.addChoice('brickHeight', {
-            '20': 4,
-            '40': 1
-        })
-
-    def render(self):
-        bricksInBase = int(self.getChoice('bricksInBase'))
-        brickWidth = self.getChoice('brickWidth')
-        brickHeight = self.getChoice('brickHeight')
-
-        return '\n'.join([
-            'int BRICKS_IN_BASE = {};'.format(bricksInBase),
-            'int BRICK_WIDTH = {};'.format(brickWidth),
-            'int BRICK_HEIGHT = {};'.format(brickHeight)
-        ])

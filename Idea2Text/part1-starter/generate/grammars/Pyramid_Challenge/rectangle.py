@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class Rectangle(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,54 +7,54 @@ class Rectangle(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawRectangleStructure extends GraphicsProgram {
-    public void run() {
+public class DrawRectangleStructure extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_Rectangle}
+        {SetCanvasSizeRectangle}
 
         // Initialize brick parameters for rows
-        {Initialize_Brick_Parameters_Rectangle_Rows}
+        {InitializeBrickParametersRectangleRows}
 
         // Draw rows of bricks
-        for (int row = 0; row < NUM_ROWS; row++) {
-            for (int i = 0; i < NUM_BRICKS_PER_ROW; i++) {
+        for (int row = 0; row < NUM_ROWS; row++) {{
+            for (int i = 0; i < NUM_BRICKS_PER_ROW; i++) {{
                 int x = START_X + i * (BRICK_WIDTH + BRICK_SEP);
                 int y = START_Y + row * (BRICK_HEIGHT + ROW_SEP);
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Add a rogue row/diagonal condition
-                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
+                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
                     brick.setFilled(true);
                     brick.setColor(Color.RED);
-                } else {
+                }} else {{
                     brick.setFilled(true);
-                    brick.setColor({Brick_Color_Rectangle});
-                }
+                    brick.setColor({BrickColorRectangle});
+                }}
 
                 add(brick);
-            }
-        }
-    }
+            }}
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawRectangleStructure().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Rectangle(Decision):
+class SetCanvasSizeRectangle(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '400': 1,
             '600': 1
         })
@@ -64,7 +63,7 @@ class Set_Canvas_Size_Rectangle(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Brick_Parameters_Rectangle_Rows(Decision):
+class InitializeBrickParametersRectangleRows(Decision):
     def registerChoices(self):
         self.addChoice('numRows', {
             'int NUM_ROWS = 3;': 2,
@@ -132,8 +131,8 @@ class Initialize_Brick_Parameters_Rectangle_Rows(Decision):
 
     def render(self):
         initialization = '\n'.join([
-            'int NUM_ROWS = {};'.format(self.getChoice('numRows')),
-            'int NUM_BRICKS_PER_ROW = {};'.format(self.getChoice('numBricksPerRow')),
+            '{};'.format(self.getChoice('numRows')),
+            '{};'.format(self.getChoice('numBricksPerRow')),
             'int BRICK_WIDTH = {};'.format(self.getChoice('brickWidth')),
             'int BRICK_HEIGHT = {};'.format(self.getChoice('brickHeight')),
             self.getChoice('brickSeparation'),
@@ -148,7 +147,7 @@ class Initialize_Brick_Parameters_Rectangle_Rows(Decision):
         return initialization
 
 
-class Brick_Color_Rectangle(Decision):
+class BrickColorRectangle(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,

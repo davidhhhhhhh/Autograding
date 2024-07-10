@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class ColumnStructure(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,57 +7,64 @@ class ColumnStructure(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawColumnStructure extends GraphicsProgram {
-    public void run() {
+public class DrawColumnStructure extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_Column}
+        {SetCanvasSizeColumn}
 
         // Determine the structure and initialize parameters
-        {Initialize_Structure_Parameters_Column}
+        {InitializeStructureParametersColumn}
+        
+        // Convert String to int array 
+        String[] stringArray = input.split(",");
+        int[] NUM_BRICKS = new int[stringArray.length];
+        for (int i = 0; i < stringArray.length; i++) {{
+            NUM_BRICKS[i] = Integer.parseInt(stringArray[i].trim());
+        }}
 
         // Draw columns or diagonals of bricks
-        for (int col = 0; col < NUM_COLUMNS; col++) {
+        for (int col = 0; col < NUM_COLUMNS; col++) {{
             int numBricks = NUM_BRICKS[col];
-            for (int i = 0; i < numBricks; i++) {
+            for (int i = 0; i < numBricks; i++) {{
                 int x = START_X + col * (BRICK_WIDTH + BRICK_SEP);
                 int y = START_Y + i * (BRICK_HEIGHT + BRICK_SEP);
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                {Set_Brick_Filled}
+                {SetBrickFilled}
 
                 // Add a rogue column/diagonal condition
-                if ((col == ROGUE_COLUMN_INDEX && isRogueColumn) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    {Set_Rogue_Brick_Filled}
+                if ((col == ROGUE_COLUMN_INDEX && isRogueColumn) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
+                    {SetRogueBrickFilled}
                     brick.setColor(Color.RED);
-                } else {
-                    brick.setColor({Brick_Color_Column});
-                }
+                }} else {{
+                    brick.setColor({BrickColorColumn});
+                }}
 
                 add(brick);
-            }
-        }
-    }
+            }}
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawColumnStructure().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Column(Decision):
+class SetCanvasSizeColumn(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '400': 1,
             '600': 1
         })
@@ -67,7 +73,7 @@ class Set_Canvas_Size_Column(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Structure_Parameters_Column(Decision):
+class InitializeStructureParametersColumn(Decision):
     def registerChoices(self):
         self.addChoice('startX', {
             'int START_X = 50;': 1,
@@ -134,41 +140,19 @@ class Initialize_Structure_Parameters_Column(Decision):
         numBricksStr = ', '.join(map(str, numBricks))
 
         return '\n'.join([
-            'int START_X = {}'.format(start_x),
-            'int START_Y = {}'.format(start_y),
+            '{}'.format(start_x),
+            '{}'.format(start_y),
             'int NUM_COLUMNS = {};'.format(numColumns),
             'int BRICK_WIDTH = {};'.format(brickWidth),
             'int BRICK_HEIGHT = {};'.format(brickHeight),
             'int BRICK_SEP = {};'.format(brickSeparation),
             'boolean isUpsideDown = {};'.format(isUpsideDown),
             'boolean isColumn = {};'.format('true' if structure == 'column' else 'false'),
-            'int[] NUM_BRICKS = {{{}}};'.format(numBricksStr)
+            'String input = "{}";'.format(numBricksStr)
         ])
 
 
-class Set_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('brickFilled', {
-            'brick.setFilled(false);': 5,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('brickFilled')
-
-
-class Set_Rogue_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('rogueBrickFilled', {
-            'brick.setFilled(false);': 3,
-            'brick.setFilled(true);': 1
-        })
-
-    def render(self):
-        return self.getChoice('rogueBrickFilled')
-
-
-class Brick_Color_Column(Decision):
+class BrickColorColumn(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,

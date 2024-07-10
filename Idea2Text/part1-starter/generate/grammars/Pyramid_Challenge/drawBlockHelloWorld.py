@@ -1,16 +1,16 @@
 from ideaToText import Decision
 
-class Draw_Block_Hello_World(Decision):
+class DrawBlockHelloWorld(Decision):
     def registerChoices(self):
         self.addChoice('rectangleOrientation', {
-            '{Standing_Rectangle}': 1,
-            '{Lying_Down_Rectangle}': 1
+            '{StandingRectangle}': 1,
+            '{LyingDownRectangle}': 1
         })
 
     def render(self):
-        return self.expand('rectangleOrientation')
+        return self.getChoice('rectangleOrientation')
 
-class Standing_Rectangle(Decision):
+class StandingRectangle(Decision):
     def registerChoices(self):
         self.addChoice('standingRectangleSize', {
             'GRect rect = new GRect(x, y, 50, 100);': 3,
@@ -21,7 +21,7 @@ class Standing_Rectangle(Decision):
     def render(self):
         return self.getChoice('standingRectangleSize')
 
-class Lying_Down_Rectangle(Decision):
+class LyingDownRectangle(Decision):
     def registerChoices(self):
         self.addChoice('lyingDownRectangleSize', {
             'GRect rect = new GRect(x, y, 100, 50);': 3,

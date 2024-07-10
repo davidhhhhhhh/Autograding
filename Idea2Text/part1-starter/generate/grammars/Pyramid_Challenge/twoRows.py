@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class TwoRows(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,71 +7,71 @@ class TwoRows(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawTwoRows extends GraphicsProgram {
-    public void run() {
+public class DrawTwoRows extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_TwoRows}
+        {SetCanvasSizeTwoRows}
 
         // Initialize brick parameters for first row
-        {Initialize_Brick_Parameters_TwoRows_FirstRow}
+        {InitializeBrickParametersTwoRowsFirstRow}
 
         // Draw first row of bricks
-        for (int i = 0; i < NUM_BRICKS_FIRST_ROW; i++) {
+        for (int i = 0; i < NUM_BRICKS_FIRST_ROW; i++) {{
             int x = START_X_FIRST_ROW + i * (BRICK_WIDTH_FIRST_ROW + BRICK_SEP_FIRST_ROW);
             int y = START_Y_FIRST_ROW;
             GRect brick = new GRect(x, y, BRICK_WIDTH_FIRST_ROW, BRICK_HEIGHT_FIRST_ROW);
 
             // Add a rogue brick condition for the first row
-            if (i == ROGUE_BRICK_INDEX_FIRST_ROW) {
+            if (i == ROGUE_BRICK_INDEX_FIRST_ROW) {{
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
-            } else {
-                brick.setColor({Brick_Color_TwoRows_FirstRow});
-            }
+            }} else {{
+                brick.setColor({BrickColorTwoRowsFirstRow});
+            }}
 
             add(brick);
-        }
+        }}
 
         // Initialize brick parameters for second row
-        {Initialize_Brick_Parameters_TwoRows_SecondRow}
+        {InitializeBrickParametersTwoRowsSecondRow}
 
         // Draw second row of bricks
-        for (int i = 0; i < NUM_BRICKS_SECOND_ROW; i++) {
+        for (int i = 0; i < NUM_BRICKS_SECOND_ROW; i++) {{
             int x = START_X_SECOND_ROW + i * (BRICK_WIDTH_SECOND_ROW + BRICK_SEP_SECOND_ROW);
             int y = START_Y_SECOND_ROW;
             GRect brick = new GRect(x, y, BRICK_WIDTH_SECOND_ROW, BRICK_HEIGHT_SECOND_ROW);
 
             // Add a rogue brick condition for the second row
-            if (i == ROGUE_BRICK_INDEX_SECOND_ROW) {
+            if (i == ROGUE_BRICK_INDEX_SECOND_ROW) {{
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
-            } else {
-                brick.setColor({Brick_Color_TwoRows_SecondRow});
-            }
+            }} else {{
+                brick.setColor({BrickColorTwoRowsSecondRow});
+            }}
 
             add(brick);
-        }
-    }
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawTwoRows().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_TwoRows(Decision):
+class SetCanvasSizeTwoRows(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '400': 2,
             '600': 1
         })
         self.addChoice('canvasHeight', {
-            '200 + 60': 3,
+            '260': 3,
             '400': 1,
             '600': 1
         })
@@ -81,7 +80,7 @@ class Set_Canvas_Size_TwoRows(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Brick_Parameters_TwoRows_FirstRow(Decision):
+class InitializeBrickParametersTwoRowsFirstRow(Decision):
     def registerChoices(self):
         self.addChoice('numBricksFirstRow', {
             'int NUM_BRICKS_FIRST_ROW = 3;': 2,
@@ -138,7 +137,7 @@ class Initialize_Brick_Parameters_TwoRows_FirstRow(Decision):
         ])
 
 
-class Initialize_Brick_Parameters_TwoRows_SecondRow(Decision):
+class InitializeBrickParametersTwoRowsSecondRow(Decision):
     def registerChoices(self):
         self.addChoice('numBricksSecondRow', {
             'int NUM_BRICKS_SECOND_ROW = 3;': 2,
@@ -192,7 +191,7 @@ class Initialize_Brick_Parameters_TwoRows_SecondRow(Decision):
         ])
 
 
-class Brick_Color_TwoRows_FirstRow(Decision):
+class BrickColorTwoRowsFirstRow(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,
@@ -208,7 +207,7 @@ class Brick_Color_TwoRows_FirstRow(Decision):
         return self.getChoice('brickColor')
 
 
-class Brick_Color_TwoRows_SecondRow(Decision):
+class BrickColorTwoRowsSecondRow(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 2,
@@ -220,5 +219,5 @@ class Brick_Color_TwoRows_SecondRow(Decision):
             'Color.BLACK': 5
         })
 
-        def render(self):
-            return self.getChoice('brickColor')
+    def render(self):
+        return self.getChoice('brickColor')

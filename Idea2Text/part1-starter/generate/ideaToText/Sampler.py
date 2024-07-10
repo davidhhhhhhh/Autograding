@@ -149,6 +149,9 @@ class Sampler:
 
     def _symbol_from_key(self, format_key):
         match = re.search(r'([A-Za-z]+)(_\d)?', format_key)
+        if match is None:
+            print(f"Warning: No match found for format_key: {format_key}")
+            return None
         return match.group(1)
 
     def _render(self, nonterminal, params = {}):
@@ -165,9 +168,16 @@ class Sampler:
         formatter = dict()
         for format_key in to_generate:
             try:
+                # symbol_to_gen = self._symbol_from_key(format_key)
                 symbol_to_gen = self._symbol_from_key(format_key)
-            except:
-                import pdb; pdb.set_trace()
+                # Add logging to track symbol generation
+                # print(f"Rendering symbol: {symbol_to_gen}")
+                if symbol_to_gen == nonterminal:  # Detect and break infinite recursion
+                    raise ValueError(f"Detected infinite recursion with symbol: {symbol_to_gen}")
+            except Exception as e:
+                print(f"Exception occurred: {e}")
+                import pdb; pdb.set_trace()  # Pause here to inspect the error
+
             formatter[format_key] = self._render(symbol_to_gen)
         curr._setParams({}) # clear params
 

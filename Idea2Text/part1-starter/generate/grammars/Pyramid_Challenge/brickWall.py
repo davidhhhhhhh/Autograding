@@ -1,6 +1,5 @@
 from ideaToText import Decision
 
-
 class BrickWall(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -8,42 +7,42 @@ class BrickWall(Decision):
 import acm.program.*;
 import java.awt.Color;
 
-public class DrawBrickWallStructure extends GraphicsProgram {
-    public void run() {
+public class DrawBrickWallStructure extends GraphicsProgram {{
+    public void run() {{
         // Set canvas size
-        {Set_Canvas_Size_Brick_Wall}
+        {SetCanvasSizeBrickWall}
 
         // Initialize structure parameters
-        {Initialize_Structure_Parameters_Brick_Wall}
+        {InitializeStructureParametersBrickWall}
 
         // Draw rows of bricks covering the entire screen without offset
-        for (int row = 0; row < NUM_ROWS; row++) {
-            for (int col = 0; col < NUM_COLUMNS; col++) {
+        for (int row = 0; row < NUM_ROWS; row++) {{
+            for (int col = 0; col < NUM_COLUMNS; col++) {{
                 int x = col * BRICK_WIDTH;
                 int y = row * BRICK_HEIGHT;
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                {Set_Brick_Filled}
+                {SetBrickFilled}
 
-                brick.setColor({Brick_Color_Brick_Wall});
+                brick.setColor({BrickColorBrickWall});
                 add(brick);
-            }
-        }
-    }
+            }}
+        }}
+    }}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {{
         // Start the GraphicsProgram
         new DrawBrickWallStructure().start(args);
-    }
-}''': 1
+    }}
+}}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class Set_Canvas_Size_Brick_Wall(Decision):
+class SetCanvasSizeBrickWall(Decision):
     def registerChoices(self):
         self.addChoice('canvasWidth', {
             '600': 1
@@ -56,7 +55,7 @@ class Set_Canvas_Size_Brick_Wall(Decision):
         return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
 
 
-class Initialize_Structure_Parameters_Brick_Wall(Decision):
+class InitializeStructureParametersBrickWall(Decision):
     def registerChoices(self):
         self.addChoice('brickWidth', {
             '40': 3,
@@ -88,19 +87,7 @@ class Initialize_Structure_Parameters_Brick_Wall(Decision):
             'int ROW_SEP = 0;'
         ])
 
-
-class Set_Brick_Filled(Decision):
-    def registerChoices(self):
-        self.addChoice('brickFilled', {
-            'brick.setFilled(true);': 1,
-            '// not filled': 5
-        })
-
-    def render(self):
-        return self.getChoice('brickFilled')
-
-
-class Brick_Color_Brick_Wall(Decision):
+class BrickColorBrickWall(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
             'Color.GRAY': 1,

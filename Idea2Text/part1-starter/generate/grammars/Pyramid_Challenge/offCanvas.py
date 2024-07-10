@@ -1,12 +1,12 @@
 from ideaToText import Decision
 
 
-class Right_Canvas(Decision):
+class OffCanvas(Decision):
     def registerChoices(self):
         self.addChoice(self.getName(), {
-            'setSize(600,400+60);': 4,
-            "setSize(800,400+60)": 2,
-            "setSize(400,400+60)": 1,
+            'setSize(600,400);': 4,
+            "setSize(800,400)": 2,
+            "setSize(400,400)": 1,
         })
 
     def render(self):

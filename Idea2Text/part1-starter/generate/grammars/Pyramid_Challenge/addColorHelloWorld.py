@@ -1,6 +1,7 @@
 from ideaToText import Decision
 
-class Add_Color_Hello_World(Decision):
+
+class AddColorHelloWorld(Decision):
     def registerChoices(self):
         self.addChoice('rectangleColor', {
             '//no color': 10,
