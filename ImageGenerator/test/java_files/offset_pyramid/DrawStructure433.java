@@ -19,20 +19,20 @@ public class DrawStructure433{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 13;
+        int BRICKS_IN_BASE = 11;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 40;
 
         // Optionally add centering assist lines
-        add(new GLine(getWidth() / 2, 0, getWidth() / 2, getHeight()));
+        // No assist lines by default
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = OFFSET_Y + getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = OFFSET_X + (getWidth() - rowWidth) / 2.0;
+            double rowY = OFFSET_Y + canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = OFFSET_X + (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {

@@ -20,10 +20,10 @@ public class DrawStructure496{
 
         // Initialize brick parameters for rows
         int NUM_ROWS = 6;;
-int NUM_BRICKS_PER_ROW = 5;;
-int BRICK_WIDTH = 20;
-int BRICK_HEIGHT = 30;
-int BRICK_SEP = 5;
+int NUM_BRICKS_PER_ROW = 7;;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 20;
+int BRICK_SEP = 0;
 int ROW_SEP = 0;
 int ROGUE_ROW_INDEX = -1;
 int ROGUE_DIAGONAL_INDEX = -1;
@@ -45,7 +45,7 @@ boolean isRogueDiagonal = false;
                     brick.setColor(Color.RED);
                 } else {
                     brick.setFilled(true);
-                    brick.setColor(Color.GREEN);
+                    brick.setColor(Color.BLACK);
                 }
 
                 canvas.add(brick);

@@ -34,8 +34,8 @@ public class DrawStructure{{
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = OFFSET_Y + getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = OFFSET_X + (getWidth() - rowWidth) / 2.0;
+            double rowY = OFFSET_Y + canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = OFFSET_X + (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {{
@@ -95,8 +95,8 @@ public class DrawStructure{{
 class AddCenteringAssistLines(Decision):
     def registerChoices(self):
         self.addChoice('centeringAssistLines', {
-            'add(new GLine(getWidth() / 2, 0, getWidth() / 2, getHeight()));': 1,
-            'add(new GLine(0, getHeight() / 2, getWidth(), getHeight() / 2));': 1,
+            'add(new GLine(canvas.getWidth() / 2, 0, canvas.getWidth() / 2, canvas.getHeight()));': 1,
+            'add(new GLine(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight() / 2));': 1,
             '// No assist lines by default': 5
         })
 

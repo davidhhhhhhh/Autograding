@@ -19,17 +19,17 @@ public class DrawStructure186{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Determine the shape and initialize parameters
-        int START_X = 100;
-int START_Y = -50;
-int NUM_ROWS = 10;
+        int START_X = 50;
+int START_Y = 50;
+int NUM_ROWS = 16;
 int NUM_BRICKS_BASE = 16;
-int BRICK_WIDTH = 40;
+int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 20;
-int BRICK_SEP = 5;
-int ROW_SEP = 0;
-boolean isUpsideDown = true;
-boolean isRightTriangle = false;
-String input = "16, 15, 14, 13, 12, 11, 10, 9, 8, 7";
+int BRICK_SEP = 10;
+int ROW_SEP = 5;
+boolean isUpsideDown = false;
+boolean isRightTriangle = true;
+String input = "16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");

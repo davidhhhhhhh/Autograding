@@ -131,8 +131,8 @@ class InitializeBrickParametersSingleRow(Decision):
             'int ROGUE_BRICK_INDEX = 2;': 1  # Rogue brick at position 2
         })
         self.addChoice('startYPosition', {
-            'int START_Y = getHeight() - 20;': 3,  # High probability to start at the bottom
-            'int START_Y = getHeight() / 2;': 1,
+            'int START_Y = canvas.getHeight() - 20;': 3,  # High probability to start at the bottom
+            'int START_Y = canvas.getHeight() / 2;': 1,
             'int START_Y = 40;': 1,
             'int START_Y = -40;': 1
         })

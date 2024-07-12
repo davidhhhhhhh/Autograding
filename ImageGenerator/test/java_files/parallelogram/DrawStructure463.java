@@ -20,17 +20,17 @@ public class DrawStructure463{
 
         // Initialize brick parameters for rows
         int NUM_ROWS = 7;;
-int NUM_BRICKS_PER_ROW = 8;;
+int NUM_BRICKS_PER_ROW = 4;;
 int OFFSET = 20;;
-int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 20;
-int BRICK_SEP = 10;
-int ROW_SEP = 0;
+int BRICK_WIDTH = 40;
+int BRICK_HEIGHT = 40;
+int BRICK_SEP = 0;
+int ROW_SEP = 5;
 int ROGUE_ROW_INDEX = 2;
-int ROGUE_DIAGONAL_INDEX = -1;
-int START_X = 50;
-int START_Y = 50;
-boolean isRogueRow = false;
+int ROGUE_DIAGONAL_INDEX = 1;
+int START_X = -50;
+int START_Y = 100;
+boolean isRogueRow = true;
 boolean isRogueDiagonal = true;
 
         // Draw rows of bricks with horizontal offset
@@ -49,7 +49,7 @@ boolean isRogueDiagonal = true;
                     brick.setFilled(false);
                     brick.setColor(Color.RED);
                 } else {
-                    brick.setColor(Color.BLUE);
+                    brick.setColor(Color.MAGENTA);
                 }
 
                 canvas.add(brick);
