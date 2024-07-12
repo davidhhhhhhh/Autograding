@@ -151,8 +151,8 @@ class InitializeBrickParametersDiagonal(Decision):
             'int START_Y = 50;': 2,
             'int START_Y = 100;': 1,
             'int START_Y = -100;': 1,
-            'int START_Y = getHeight() - 20;': 1,
-            'int START_Y = getHeight() + 60;': 5
+            'int START_Y = canvas.getHeight() - 20;': 1,
+            'int START_Y = canvas.getHeight() + 60;': 5
         })
         self.addChoice('isDiagonal', {
             'boolean isDiagonal = true;': 2,
