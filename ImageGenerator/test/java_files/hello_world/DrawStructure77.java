@@ -1,5 +1,11 @@
 import acm.graphics.*;
-import acm.program.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.imageio.ImageIO;
 
 public class DrawStructure77{
     private static final int CANVAS_WIDTH = 600;
@@ -13,7 +19,7 @@ public class DrawStructure77{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
             
         // Create a rectangle with the specified position 
-        int x = 100; int y = 100;
+        int x = -75; int y = -75;
         // Specify size of the rectangle 
         GRect rect = new GRect(x, y, 50, 100);
         // Add color, optional 

@@ -19,8 +19,8 @@ public class DrawStructure450{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 12;
-int BRICK_WIDTH = 80;
+        int BRICKS_IN_BASE = 14;
+int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
 
         // Optionally add centering assist lines
@@ -43,7 +43,7 @@ int BRICK_HEIGHT = 20;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.YELLOW);
+                brick.setColor(Color.GRAY);
                 canvas.add(brick);
             }
         }

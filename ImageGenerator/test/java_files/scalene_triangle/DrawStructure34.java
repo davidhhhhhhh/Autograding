@@ -19,16 +19,16 @@ public class DrawStructure34{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Determine the structure and initialize parameters
-        int START_X = 50;;
-int START_Y = 100;;
-int NUM_ROWS = 4;
+        int START_X = -50;;
+int START_Y = 50;;
+int NUM_ROWS = 7;
 int BRICK_WIDTH = 20;
 int BRICK_HEIGHT = 20;
-int BRICK_SEP = 0;
+int BRICK_SEP = 10;
 int ROW_SEP = 0;
 int HORIZONTAL_OFFSET = -20;
 boolean isUpsideDown = false;
-String input = "1, 2, 3, 4";
+String input = "1, 2, 3, 4, 5, 6, 7";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -46,8 +46,8 @@ String input = "1, 2, 3, 4";
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(false);
-                brick.setColor(Color.BLUE);
+                brick.setFilled(true);
+                brick.setColor(Color.BLACK);
 
                 canvas.add(brick);
             }

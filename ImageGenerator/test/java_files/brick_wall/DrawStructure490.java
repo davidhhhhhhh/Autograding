@@ -19,10 +19,10 @@ public class DrawStructure490{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int NUM_COLUMNS = 10;
-int NUM_ROWS = 20;
-int BRICK_WIDTH = 60;
-int BRICK_HEIGHT = 20;
+        int NUM_COLUMNS = 15;
+int NUM_ROWS = 40;
+int BRICK_WIDTH = 40;
+int BRICK_HEIGHT = 10;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
 
@@ -36,7 +36,7 @@ int ROW_SEP = 0;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.ORANGE);
+                brick.setColor(Color.BLACK);
                 canvas.add(brick);
             }
         }
