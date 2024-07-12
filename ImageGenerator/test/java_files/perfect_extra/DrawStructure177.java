@@ -28,8 +28,8 @@ int BRICK_HEIGHT = 20;
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = (getWidth() - rowWidth) / 2.0;
+            double rowY = canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {
@@ -38,9 +38,9 @@ int BRICK_HEIGHT = 20;
                 GRect brick = new GRect(x, rowY, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
+                brick.setFilled(false);
 
-                brick.setColor(Color.BLUE);
+                brick.setColor(Color.MAGENTA);
                 canvas.add(brick);
             }
         }

@@ -19,7 +19,7 @@ public class DrawStructure210{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 14;
+        int BRICKS_IN_BASE = 12;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
 
@@ -31,8 +31,8 @@ int BRICK_HEIGHT = 20;
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = OFFSET_Y + getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = OFFSET_X + (getWidth() - rowWidth) / 2.0;
+            double rowY = OFFSET_Y + canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = OFFSET_X + (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {

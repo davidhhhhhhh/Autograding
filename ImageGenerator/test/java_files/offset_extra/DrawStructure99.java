@@ -24,15 +24,15 @@ int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
 
         // Optionally add centering assist lines
-        add(new GLine(0, getHeight() / 2, getWidth(), getHeight() / 2));
+        // No assist lines by default
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = OFFSET_Y + getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = OFFSET_X + (getWidth() - rowWidth) / 2.0;
+            double rowY = OFFSET_Y + canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = OFFSET_X + (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {
@@ -43,7 +43,7 @@ int BRICK_HEIGHT = 20;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.MAGENTA);
+                brick.setColor(Color.GRAY);
                 canvas.add(brick);
             }
         }

@@ -31,8 +31,8 @@ int BRICK_HEIGHT = 20;
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = OFFSET_Y + getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = OFFSET_X + (getWidth() - rowWidth) / 2.0;
+            double rowY = OFFSET_Y + canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
+            double rowX = OFFSET_X + (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {
@@ -43,7 +43,7 @@ int BRICK_HEIGHT = 20;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.GRAY);
+                brick.setColor(Color.BLUE);
                 canvas.add(brick);
             }
         }

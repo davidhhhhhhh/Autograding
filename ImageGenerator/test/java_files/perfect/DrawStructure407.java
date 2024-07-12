@@ -28,8 +28,8 @@ int BRICK_HEIGHT = 20;
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = getHeight() - (i + 1) * BRICK_HEIGHT;
-            double rowX = (getWidth() - rowWidth) / 2.0;
+            double rowY = canvas.Height() - (i + 1) * BRICK_HEIGHT;
+            double rowX = (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
             for (int j = 0; j < nBricks; j++) {
