@@ -20,16 +20,16 @@ public class DrawStructure286{
 
         // Determine the shape and initialize parameters
         int START_X = 50;
-int START_Y = 100;
-int NUM_ROWS = 10;
+int START_Y = -50;
+int NUM_ROWS = 16;
 int NUM_BRICKS_BASE = 16;
 int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 30;
+int BRICK_HEIGHT = 40;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
-boolean isUpsideDown = false;
-boolean isRightTriangle = false;
-String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
+boolean isUpsideDown = true;
+boolean isRightTriangle = true;
+String input = "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -47,15 +47,8 @@ String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
-
-                // Add a rogue row/diagonal condition
-                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    brick.setFilled(true);
-                    brick.setColor(Color.RED);
-                } else {
-                    brick.setColor(Color.BLACK);
-                }
+                brick.setFilled(false);
+                brick.setColor(Color.GRAY);
 
                 canvas.add(brick);
             }

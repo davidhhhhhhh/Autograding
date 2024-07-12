@@ -36,7 +36,7 @@ int ROW_SEP = 0;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.YELLOW);
+                brick.setColor(Color.BLUE);
                 canvas.add(brick);
             }
         }

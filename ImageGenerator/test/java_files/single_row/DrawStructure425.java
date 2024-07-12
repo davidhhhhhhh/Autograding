@@ -19,9 +19,9 @@ public class DrawStructure425{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize starting position and other parameters
-        int NUM_BRICKS = 3;
-int BRICK_WIDTH = 20;
-int BRICK_HEIGHT = 30;
+        int NUM_BRICKS = 4;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 40;
 int BRICK_SEP = 0;
 int ROGUE_BRICK_INDEX = -1;
 int START_Y = getHeight() - 20;

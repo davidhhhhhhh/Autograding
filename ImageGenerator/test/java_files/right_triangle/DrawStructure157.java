@@ -19,14 +19,14 @@ public class DrawStructure157{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Determine the shape and initialize parameters
-        int START_X = -50;
-int START_Y = 100;
+        int START_X = 50;
+int START_Y = 50;
 int NUM_ROWS = 10;
 int NUM_BRICKS_BASE = 14;
-int BRICK_WIDTH = 40;
+int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 20;
 int BRICK_SEP = 0;
-int ROW_SEP = 5;
+int ROW_SEP = 0;
 boolean isUpsideDown = false;
 boolean isRightTriangle = false;
 String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
@@ -47,15 +47,8 @@ String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
-
-                // Add a rogue row/diagonal condition
-                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    brick.setFilled(true);
-                    brick.setColor(Color.RED);
-                } else {
-                    brick.setColor(Color.GRAY);
-                }
+                brick.setFilled(false);
+                brick.setColor(Color.BLACK);
 
                 canvas.add(brick);
             }

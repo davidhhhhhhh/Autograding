@@ -13,11 +13,11 @@ public class DrawStructure302{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
             
         // Create a rectangle with the specified position 
-        int x = 100; int y = 100;
+        int x = 200; int y = 50;
         // Specify size of the rectangle 
         GRect rect = new GRect(x, y, 50, 100);
         // Add color, optional 
-        //no color
+        rect.setFilled(true); rect.setColor(Color.GREEN);
 
         // Add the rectangle to the canvas
         canvas.add(rect);

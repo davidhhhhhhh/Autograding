@@ -19,16 +19,16 @@ public class DrawStructure10{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Determine the structure and initialize parameters
-        int START_X = 50;;
+        int START_X = -50;;
 int START_Y = 100;;
-int NUM_ROWS = 4;
+int NUM_ROWS = 3;
 int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 40;
-int BRICK_SEP = 0;
-int ROW_SEP = 0;
+int BRICK_HEIGHT = 20;
+int BRICK_SEP = 10;
+int ROW_SEP = 5;
 int HORIZONTAL_OFFSET = 20;
 boolean isUpsideDown = false;
-String input = "1, 2, 3, 4";
+String input = "1, 2, 3";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -47,14 +47,7 @@ String input = "1, 2, 3, 4";
 
                 // Determine if the brick is filled
                 brick.setFilled(false);
-
-                // Add a rogue row/diagonal condition
-                if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    brick.setFilled(false);
-                    brick.setColor(Color.RED);
-                } else {
-                    brick.setColor(Color.BLACK);
-                }
+                brick.setColor(Color.GRAY);
 
                 canvas.add(brick);
             }

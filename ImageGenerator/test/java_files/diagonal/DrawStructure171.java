@@ -19,15 +19,15 @@ public class DrawStructure171{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize brick parameters
-        int NUM_BRICKS = 5;
-int BRICK_WIDTH = 20;
+        int NUM_BRICKS = 6;
+int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 20;
-int BRICK_SEP = 0;
+int BRICK_SEP = 5;
 int ROGUE_BRICK_INDEX = 2;
-int START_X = 50;
-int START_Y = 50;
+int START_X = 100;
+int START_Y = getHeight() + 60;
 boolean isDiagonal = true;
-boolean isUpRight = true;
+boolean isUpRight = false;
 
         // Draw bricks
         for (int i = 0; i < NUM_BRICKS; i++) {
@@ -52,7 +52,7 @@ boolean isUpRight = true;
                 brick.setColor(Color.RED);
             } else {
                 brick.setFilled(true);
-                brick.setColor(Color.BLACK);
+                brick.setColor(Color.GRAY);
             }
 
             canvas.add(brick);

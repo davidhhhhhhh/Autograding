@@ -21,16 +21,16 @@ public class DrawStructure85{
 
         // Initialize structure parameters
         int START_X = 50;
-int START_Y = 50;
-int NUM_ROWS = 8;
-int BRICK_WIDTH = 20;
-int BRICK_HEIGHT = 30;
-int BRICK_SEP = 0;
-int ROW_SEP = 0;
+int START_Y = -50;
+int NUM_ROWS = 3;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 20;
+int BRICK_SEP = 5;
+int ROW_SEP = 5;
 int HORIZONTAL_OFFSET = 20;
-int HOLE_PROBABILITY = 2;
-boolean isUpsideDown = false;
-String input = "1, 2, 3, 4, 5, 6, 7, 8";
+int HOLE_PROBABILITY = 3;
+boolean isUpsideDown = true;
+String input = "3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -55,15 +55,8 @@ String input = "1, 2, 3, 4, 5, 6, 7, 8";
                     GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                     // Determine if the brick is filled
-                    brick.setFilled(true);
-
-                    // Add a rogue row/diagonal condition
-                    if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                        brick.setFilled(true);
-                        brick.setColor(Color.RED);
-                    } else {
-                        brick.setColor(Color.BLACK);
-                    }
+                    brick.setFilled(false);
+                    brick.setColor(Color.YELLOW);
 
                     canvas.add(brick);
                 }

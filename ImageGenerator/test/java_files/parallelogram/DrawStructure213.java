@@ -19,16 +19,16 @@ public class DrawStructure213{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize brick parameters for rows
-        int NUM_ROWS = 4;;
-int NUM_BRICKS_PER_ROW = 6;;
+        int NUM_ROWS = 5;;
+int NUM_BRICKS_PER_ROW = 4;;
 int OFFSET = 20;;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 30;
-int BRICK_SEP = 0;
+int BRICK_SEP = 10;
 int ROW_SEP = 0;
 int ROGUE_ROW_INDEX = -1;
 int ROGUE_DIAGONAL_INDEX = -1;
-int START_X = -50;
+int START_X = 50;
 int START_Y = 100;
 boolean isRogueRow = true;
 boolean isRogueDiagonal = false;

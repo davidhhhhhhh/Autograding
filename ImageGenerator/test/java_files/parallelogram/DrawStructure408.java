@@ -20,15 +20,15 @@ public class DrawStructure408{
 
         // Initialize brick parameters for rows
         int NUM_ROWS = 7;;
-int NUM_BRICKS_PER_ROW = 6;;
-int OFFSET = 20;;
-int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 40;
+int NUM_BRICKS_PER_ROW = 8;;
+int OFFSET = -20;;
+int BRICK_WIDTH = 40;
+int BRICK_HEIGHT = 20;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
-int ROGUE_ROW_INDEX = -1;
-int ROGUE_DIAGONAL_INDEX = -1;
-int START_X = -50;
+int ROGUE_ROW_INDEX = 2;
+int ROGUE_DIAGONAL_INDEX = 2;
+int START_X = 50;
 int START_Y = -50;
 boolean isRogueRow = false;
 boolean isRogueDiagonal = true;

@@ -40,7 +40,7 @@ int BRICK_HEIGHT = 20;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.YELLOW);
+                brick.setColor(Color.GREEN);
                 canvas.add(brick);
             }
         }
