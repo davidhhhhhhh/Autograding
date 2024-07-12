@@ -43,14 +43,7 @@ public class DrawStructure{{
 
                 // Determine if the brick is filled
                 {SetBrickFilled}
-
-                // Add a rogue column/diagonal condition
-                if ((col == ROGUE_COLUMN_INDEX && isRogueColumn) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
-                    {SetRogueBrickFilled}
-                    brick.setColor(Color.RED);
-                }} else {{
-                    brick.setColor({BrickColorColumn});
-                }}
+                brick.setColor({BrickColorColumn});
 
                 canvas.add(brick);
             }}
