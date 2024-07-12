@@ -31,7 +31,7 @@ public class DrawStructure{{
             // Calculate row variables
             int nBricks = BRICKS_IN_BASE - i;
             int rowWidth = nBricks * BRICK_WIDTH;
-            double rowY = canvas.Height() - (i + 1) * BRICK_HEIGHT;
+            double rowY = canvas.getHeight() - (i + 1) * BRICK_HEIGHT;
             double rowX = (canvas.getWidth() - rowWidth) / 2.0;
 
             // Draw a single row
