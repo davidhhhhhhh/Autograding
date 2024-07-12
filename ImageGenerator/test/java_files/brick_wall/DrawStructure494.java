@@ -19,9 +19,9 @@ public class DrawStructure494{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int NUM_COLUMNS = 10;
+        int NUM_COLUMNS = 7;
 int NUM_ROWS = 20;
-int BRICK_WIDTH = 60;
+int BRICK_WIDTH = 80;
 int BRICK_HEIGHT = 20;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
@@ -34,9 +34,9 @@ int ROW_SEP = 0;
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
+                brick.setFilled(false);
 
-                brick.setColor(Color.YELLOW);
+                brick.setColor(Color.BLUE);
                 canvas.add(brick);
             }
         }

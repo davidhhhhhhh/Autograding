@@ -19,9 +19,9 @@ public class DrawStructure481{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 11;
+        int BRICKS_IN_BASE = 12;
 int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 20;
+int BRICK_HEIGHT = 40;
 
         // Optionally add centering assist lines
         // No assist lines by default

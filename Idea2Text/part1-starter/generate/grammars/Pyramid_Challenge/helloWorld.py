@@ -4,7 +4,13 @@ class HelloWorld(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''import acm.graphics.*;
-import acm.program.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.imageio.ImageIO;
 
 public class DrawStructure{{
     private static final int CANVAS_WIDTH = 600;

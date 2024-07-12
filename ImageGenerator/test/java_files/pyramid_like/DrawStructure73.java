@@ -21,16 +21,16 @@ public class DrawStructure73{
 
         // Initialize structure parameters
         int START_X = -50;
-int START_Y = 100;
-int NUM_ROWS = 5;
+int START_Y = 50;
+int NUM_ROWS = 8;
 int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 20;
-int BRICK_SEP = 0;
-int ROW_SEP = 5;
-int HORIZONTAL_OFFSET = -20;
-int HOLE_PROBABILITY = 2;
-boolean isUpsideDown = false;
-String input = "1, 2, 3, 4, 5";
+int BRICK_HEIGHT = 30;
+int BRICK_SEP = 10;
+int ROW_SEP = 0;
+int HORIZONTAL_OFFSET = 20;
+int HOLE_PROBABILITY = 1;
+boolean isUpsideDown = true;
+String input = "8, 7, 6, 5, 4, 3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");

@@ -19,9 +19,9 @@ public class DrawStructure221{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 14;
+        int BRICKS_IN_BASE = 10;
 int BRICK_WIDTH = 80;
-int BRICK_HEIGHT = 40;
+int BRICK_HEIGHT = 20;
 
         // Optionally add centering assist lines
         add(new GLine(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight() / 2));
