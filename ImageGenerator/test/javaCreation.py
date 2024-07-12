@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 # Load the JSON file
 with open('pyramid_500.json') as f:
@@ -15,10 +16,15 @@ for i, entry in enumerate(data):
     label = entry['choices']['strategies']
     label_dir = os.path.join(java_dir, label)
     os.makedirs(label_dir, exist_ok=True)
-    file_name = f"Script{i}.java"
+
+    # Modify the class name to match the file name
+    new_class_name = f"DrawStructure{i}"
+    script = re.sub(r'\bDrawStructure\b', new_class_name, script)
+
+    file_name = f"{new_class_name}.java"
     file_path = os.path.join(label_dir, file_name)
 
     with open(file_path, 'w') as java_file:
         java_file.write(script)
 
-print("Java files created successfully.")
+print("Java files created successfully with matching class names.")
