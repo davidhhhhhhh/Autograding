@@ -20,9 +20,9 @@ public class DrawStructure409{
 
         // Initialize structure parameters
         int NUM_COLUMNS = 10;
-int NUM_ROWS = 10;
+int NUM_ROWS = 20;
 int BRICK_WIDTH = 60;
-int BRICK_HEIGHT = 40;
+int BRICK_HEIGHT = 20;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
 
@@ -36,7 +36,7 @@ int ROW_SEP = 0;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.ORANGE);
+                brick.setColor(Color.GRAY);
                 canvas.add(brick);
             }
         }

@@ -20,17 +20,17 @@ public class DrawStructure53{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int START_X = -50;
-int START_Y = 50;
-int NUM_ROWS = 3;
+        int START_X = 100;
+int START_Y = 100;
+int NUM_ROWS = 7;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
-int BRICK_SEP = 10;
+int BRICK_SEP = 0;
 int ROW_SEP = 5;
 int HORIZONTAL_OFFSET = 20;
-int HOLE_PROBABILITY = 3;
-boolean isUpsideDown = false;
-String input = "1, 2, 3";
+int HOLE_PROBABILITY = 2;
+boolean isUpsideDown = true;
+String input = "7, 6, 5, 4, 3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
