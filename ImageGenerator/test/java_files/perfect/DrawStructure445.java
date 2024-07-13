@@ -21,7 +21,7 @@ public class DrawStructure445{
         // Initialize structure parameters
         int BRICKS_IN_BASE = 14;
 int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 20;
+int BRICK_HEIGHT = 40;
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
@@ -38,7 +38,7 @@ int BRICK_HEIGHT = 20;
                 GRect brick = new GRect(x, rowY, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
+                brick.setFilled(false);
 
                 canvas.add(brick);
             }

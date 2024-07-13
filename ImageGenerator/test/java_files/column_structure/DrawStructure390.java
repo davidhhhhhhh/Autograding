@@ -20,14 +20,14 @@ public class DrawStructure390{
 
         // Determine the structure and initialize parameters
         int START_X = -50;
-int START_Y = -50;
-int NUM_COLUMNS = 5;
+int START_Y = 50;
+int NUM_COLUMNS = 6;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 40;
-int BRICK_SEP = 5;
+int BRICK_SEP = 0;
 boolean isUpsideDown = false;
 boolean isColumn = true;
-String input = "5, 5, 5, 5, 5";
+String input = "6, 6, 6, 6, 6, 6";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -45,8 +45,8 @@ String input = "5, 5, 5, 5, 5";
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
-                brick.setColor(Color.MAGENTA);
+                brick.setFilled(false);
+                brick.setColor(Color.BLACK);
 
                 canvas.add(brick);
             }

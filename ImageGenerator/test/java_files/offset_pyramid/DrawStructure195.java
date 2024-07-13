@@ -19,14 +19,14 @@ public class DrawStructure195{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 11;
+        int BRICKS_IN_BASE = 14;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 40;
 int OFFSET_X = 20;
-int OFFSET_Y = 20;
+int OFFSET_Y = 10;
 
         // Optionally add centering assist lines
-        canvas.add(new GLine(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight() / 2));
+        // No assist lines by default
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
