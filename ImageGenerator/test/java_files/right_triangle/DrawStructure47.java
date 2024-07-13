@@ -21,15 +21,15 @@ public class DrawStructure47{
         // Determine the shape and initialize parameters
         int START_X = -50;
 int START_Y = 50;
-int NUM_ROWS = 14;
-int NUM_BRICKS_BASE = 14;
-int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 30;
-int BRICK_SEP = 10;
+int NUM_ROWS = 10;
+int NUM_BRICKS_BASE = 15;
+int BRICK_WIDTH = 40;
+int BRICK_HEIGHT = 40;
+int BRICK_SEP = 0;
 int ROW_SEP = 0;
 boolean isUpsideDown = false;
-boolean isRightTriangle = true;
-String input = "14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
+boolean isRightTriangle = false;
+String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -48,7 +48,7 @@ String input = "14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
 
                 // Determine if the brick is filled
                 brick.setFilled(false);
-                brick.setColor(Color.GREEN);
+                brick.setColor(Color.ORANGE);
 
                 canvas.add(brick);
             }

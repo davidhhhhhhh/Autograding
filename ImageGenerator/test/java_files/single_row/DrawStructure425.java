@@ -20,10 +20,10 @@ public class DrawStructure425{
 
         // Initialize starting position and other parameters
         int NUM_BRICKS = 5;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 20;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 40;
 int BRICK_SEP = 0;
-int ROGUE_BRICK_INDEX = 1;
+int ROGUE_BRICK_INDEX = -1;
 int START_Y = canvas.getHeight() - 20;
 
         // Draw bricks
@@ -37,7 +37,7 @@ int START_Y = canvas.getHeight() - 20;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setColor(Color.ORANGE);
+                brick.setColor(Color.GRAY);
             }
 
             canvas.add(brick);

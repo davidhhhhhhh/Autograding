@@ -24,7 +24,7 @@ public class DrawStructure{{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        {InitializeStructureParametersPyramid}
+        {InitializeStructureParametersPyramidOffset}
 
         // Optionally add centering assist lines
         {AddCenteringAssistLines}
@@ -92,6 +92,50 @@ public class DrawStructure{{
 
     def render(self):
         return self.getChoice('codeStructure')
+
+
+class InitializeStructureParametersPyramidOffset(Decision):
+    def registerChoices(self):
+        self.addChoice('bricksInBase', {
+            '14': 5,
+            '13': 4,
+            '12': 3,
+            '11': 2,
+            '10': 1
+        })
+        self.addChoice('brickWidth', {
+            '40': 4,
+            '80': 1
+        })
+        self.addChoice('brickHeight', {
+            '20': 4,
+            '40': 1
+        })
+        self.addChoice('OFFSET_Y', {
+            '-20': 1,
+            '10': 1,
+            '20': 1,
+            '-30': 1
+        })
+        self.addChoice('OFFSET_X', {
+            '20': 1,
+            '40': 1
+        })
+
+    def render(self):
+        bricksInBase = int(self.getChoice('bricksInBase'))
+        brickWidth = self.getChoice('brickWidth')
+        brickHeight = self.getChoice('brickHeight')
+        OFFSET_X = self.getChoice('OFFSET_X')
+        OFFSET_Y = self.getChoice('OFFSET_Y')
+
+        return '\n'.join([
+            'int BRICKS_IN_BASE = {};'.format(bricksInBase),
+            'int BRICK_WIDTH = {};'.format(brickWidth),
+            'int BRICK_HEIGHT = {};'.format(brickHeight),
+            'int OFFSET_X = {};'.format(OFFSET_X),
+            'int OFFSET_Y = {};'.format(OFFSET_Y)
+        ])
 
 
 class BrickColorPyramidExtra(Decision):
