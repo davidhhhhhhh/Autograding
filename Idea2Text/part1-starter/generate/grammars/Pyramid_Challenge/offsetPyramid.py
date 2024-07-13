@@ -24,7 +24,7 @@ public class DrawStructure{{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        {InitializeStructureParametersPyramid}
+        {InitializeStructureParametersPyramidOffset}
 
         // Optionally add centering assist lines
         {AddCenteringAssistLines}

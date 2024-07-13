@@ -21,9 +21,9 @@ public class DrawStructure202{
         // Create a rectangle with the specified position 
         int x = 100; int y = 100;
         // Specify size of the rectangle 
-        GRect rect = new GRect(x, y, 200, 100);
+        GRect rect = new GRect(x, y, 100, 50);
         // Add color, optional 
-        //no color
+        rect.setFilled(true); rect.setColor(Color.YELLOW);
 
         // Add the rectangle to the canvas
         canvas.add(rect);

@@ -20,16 +20,16 @@ public class DrawStructure35{
 
         // Initialize brick parameters for rows
         int NUM_ROWS = 7;;
-int NUM_BRICKS_PER_ROW = 3;;
-int OFFSET = 20;;
-int BRICK_WIDTH = 20;
+int NUM_BRICKS_PER_ROW = 6;;
+int OFFSET = -20;;
+int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 40;
-int BRICK_SEP = 10;
+int BRICK_SEP = 0;
 int ROW_SEP = 0;
-int ROGUE_ROW_INDEX = 2;
-int ROGUE_DIAGONAL_INDEX = 2;
-int START_X = 50;
-int START_Y = 50;
+int ROGUE_ROW_INDEX = -1;
+int ROGUE_DIAGONAL_INDEX = 1;
+int START_X = -50;
+int START_Y = -50;
 boolean isRogueRow = false;
 boolean isRogueDiagonal = false;
 
@@ -42,7 +42,7 @@ boolean isRogueDiagonal = false;
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(false);
+                brick.setFilled(true);
 
                 // Add a rogue row/diagonal condition
                 if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {

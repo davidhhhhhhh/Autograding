@@ -19,12 +19,14 @@ public class DrawStructure209{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 14;
+        int BRICKS_IN_BASE = 13;
 int BRICK_WIDTH = 80;
 int BRICK_HEIGHT = 20;
+int OFFSET_X = 20;
+int OFFSET_Y = -30;
 
         // Optionally add centering assist lines
-        // No assist lines by default
+        add(new GLine(canvas.getWidth() / 2, 0, canvas.getWidth() / 2, canvas.getHeight()));
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
@@ -41,9 +43,9 @@ int BRICK_HEIGHT = 20;
                 GRect brick = new GRect(x, rowY, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(false);
+                brick.setFilled(true);
 
-                brick.setColor(Color.MAGENTA);
+                brick.setColor(Color.BLUE);
                 canvas.add(brick);
             }
         }

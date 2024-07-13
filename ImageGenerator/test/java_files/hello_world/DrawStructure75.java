@@ -21,7 +21,7 @@ public class DrawStructure75{
         // Create a rectangle with the specified position 
         int x = 50; int y = 50;
         // Specify size of the rectangle 
-        GRect rect = new GRect(x, y, 200, 100);
+        GRect rect = new GRect(x, y, 50, 100);
         // Add color, optional 
         //no color
 

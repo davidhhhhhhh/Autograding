@@ -19,17 +19,17 @@ public class DrawStructure248{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize brick parameters for rows
-        int NUM_ROWS = 5;;
-int NUM_BRICKS_PER_ROW = 8;;
+        int NUM_ROWS = 4;;
+int NUM_BRICKS_PER_ROW = 3;;
 int OFFSET = 20;;
-int BRICK_WIDTH = 20;
+int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 30;
 int BRICK_SEP = 0;
-int ROW_SEP = 0;
-int ROGUE_ROW_INDEX = -1;
+int ROW_SEP = 10;
+int ROGUE_ROW_INDEX = 1;
 int ROGUE_DIAGONAL_INDEX = -1;
-int START_X = 50;
-int START_Y = -50;
+int START_X = 100;
+int START_Y = 50;
 boolean isRogueRow = false;
 boolean isRogueDiagonal = false;
 
@@ -42,14 +42,14 @@ boolean isRogueDiagonal = false;
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(false);
+                brick.setFilled(true);
 
                 // Add a rogue row/diagonal condition
                 if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    brick.setFilled(false);
+                    brick.setFilled(true);
                     brick.setColor(Color.RED);
                 } else {
-                    brick.setColor(Color.ORANGE);
+                    brick.setColor(Color.GRAY);
                 }
 
                 canvas.add(brick);
