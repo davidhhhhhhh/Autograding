@@ -22,8 +22,8 @@ public class DrawStructure352{
         int BRICKS_IN_BASE = 14;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
-int OFFSET_X = 40;
-int OFFSET_Y = 20;
+int OFFSET_X = 20;
+int OFFSET_Y = 10;
 
         // Optionally add centering assist lines
         // No assist lines by default

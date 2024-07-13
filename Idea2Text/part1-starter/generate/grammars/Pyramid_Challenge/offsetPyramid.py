@@ -95,8 +95,8 @@ public class DrawStructure{{
 class AddCenteringAssistLines(Decision):
     def registerChoices(self):
         self.addChoice('centeringAssistLines', {
-            'add(new GLine(canvas.getWidth() / 2, 0, canvas.getWidth() / 2, canvas.getHeight()));': 1,
-            'add(new GLine(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight() / 2));': 1,
+            'canvas.add(new GLine(canvas.getWidth() / 2, 0, canvas.getWidth() / 2, canvas.getHeight()));': 1,
+            'canvas.add(new GLine(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight() / 2));': 1,
             '// No assist lines by default': 5
         })
 

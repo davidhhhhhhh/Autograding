@@ -19,11 +19,11 @@ public class DrawStructure316{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 12;
+        int BRICKS_IN_BASE = 11;
 int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
-int OFFSET_X = 20;
-int OFFSET_Y = -20;
+int OFFSET_X = 40;
+int OFFSET_Y = 20;
 
         // Optionally add centering assist lines
         // No assist lines by default
@@ -45,7 +45,7 @@ int OFFSET_Y = -20;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.GRAY);
+                brick.setColor(Color.ORANGE);
                 canvas.add(brick);
             }
         }

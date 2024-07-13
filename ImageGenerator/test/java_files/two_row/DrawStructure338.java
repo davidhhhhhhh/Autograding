@@ -20,10 +20,10 @@ public class DrawStructure338{
 
         // Initialize brick parameters for first row
         int NUM_BRICKS_FIRST_ROW = 5;
-int BRICK_WIDTH_FIRST_ROW = 40;
+int BRICK_WIDTH_FIRST_ROW = 20;
 int BRICK_HEIGHT_FIRST_ROW = 20;
-int BRICK_SEP_FIRST_ROW = 0;
-int ROGUE_BRICK_INDEX_FIRST_ROW = -1;
+int BRICK_SEP_FIRST_ROW = 10;
+int ROGUE_BRICK_INDEX_FIRST_ROW = 1;
 int START_X_FIRST_ROW = 50;
 int START_Y_FIRST_ROW = -50;
 
@@ -38,20 +38,20 @@ int START_Y_FIRST_ROW = -50;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setColor(Color.GRAY);
+                brick.setColor(Color.MAGENTA);
             }
 
             canvas.add(brick);
         }
 
         // Initialize brick parameters for second row
-        int NUM_BRICKS_SECOND_ROW = 7;
+        int NUM_BRICKS_SECOND_ROW = 8;
 int BRICK_WIDTH_SECOND_ROW = 40;
-int BRICK_HEIGHT_SECOND_ROW = 20;
+int BRICK_HEIGHT_SECOND_ROW = 40;
 int BRICK_SEP_SECOND_ROW = 0;
-int ROGUE_BRICK_INDEX_SECOND_ROW = 1;
-int START_X_SECOND_ROW = START_X_FIRST_ROW + 100;
-int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 150;
+int ROGUE_BRICK_INDEX_SECOND_ROW = -1;
+int START_X_SECOND_ROW = START_X_FIRST_ROW + 50;
+int START_Y_SECOND_ROW = START_Y_FIRST_ROW + BRICK_HEIGHT_FIRST_ROW;
 
         // Draw second row of bricks
         for (int i = 0; i < NUM_BRICKS_SECOND_ROW; i++) {
@@ -64,7 +64,7 @@ int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 150;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setColor(Color.GRAY);
+                brick.setColor(Color.MAGENTA);
             }
 
             add(brick);
