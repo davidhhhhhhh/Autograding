@@ -19,9 +19,9 @@ public class DrawStructure75{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
             
         // Create a rectangle with the specified position 
-        int x = 50; int y = 50;
+        int x = 150; int y = 150;
         // Specify size of the rectangle 
-        GRect rect = new GRect(x, y, 50, 100);
+        GRect rect = new GRect(x, y, 75, 150);
         // Add color, optional 
         //no color
 

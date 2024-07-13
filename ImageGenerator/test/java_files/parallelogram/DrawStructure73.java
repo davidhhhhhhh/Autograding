@@ -20,18 +20,18 @@ public class DrawStructure73{
 
         // Initialize brick parameters for rows
         int NUM_ROWS = 6;;
-int NUM_BRICKS_PER_ROW = 5;;
-int OFFSET = -20;;
+int NUM_BRICKS_PER_ROW = 6;;
+int OFFSET = 20;;
 int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 30;
+int BRICK_HEIGHT = 20;
 int BRICK_SEP = 10;
 int ROW_SEP = 0;
-int ROGUE_ROW_INDEX = 2;
-int ROGUE_DIAGONAL_INDEX = 1;
-int START_X = 50;
+int ROGUE_ROW_INDEX = -1;
+int ROGUE_DIAGONAL_INDEX = 2;
+int START_X = -50;
 int START_Y = 100;
 boolean isRogueRow = false;
-boolean isRogueDiagonal = false;
+boolean isRogueDiagonal = true;
 
         // Draw rows of bricks with horizontal offset
         for (int row = 0; row < NUM_ROWS; row++) {
@@ -42,11 +42,11 @@ boolean isRogueDiagonal = false;
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
+                brick.setFilled(false);
 
                 // Add a rogue row/diagonal condition
                 if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    brick.setFilled(false);
+                    brick.setFilled(true);
                     brick.setColor(Color.RED);
                 } else {
                     brick.setColor(Color.GREEN);

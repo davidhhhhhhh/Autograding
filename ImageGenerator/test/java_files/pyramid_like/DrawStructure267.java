@@ -22,15 +22,15 @@ public class DrawStructure267{
         // Initialize structure parameters
         int START_X = 100;
 int START_Y = -50;
-int NUM_ROWS = 3;
+int NUM_ROWS = 6;
 int BRICK_WIDTH = 20;
 int BRICK_HEIGHT = 40;
 int BRICK_SEP = 10;
-int ROW_SEP = 0;
-int HORIZONTAL_OFFSET = 20;
+int ROW_SEP = 10;
+int HORIZONTAL_OFFSET = -20;
 int HOLE_PROBABILITY = 2;
-boolean isUpsideDown = false;
-String input = "1, 2, 3";
+boolean isUpsideDown = true;
+String input = "6, 5, 4, 3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -55,8 +55,8 @@ String input = "1, 2, 3";
                     GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                     // Determine if the brick is filled
-                    brick.setFilled(true);
-                    brick.setColor(Color.GRAY);
+                    brick.setFilled(false);
+                    brick.setColor(Color.BLACK);
 
                     canvas.add(brick);
                 }

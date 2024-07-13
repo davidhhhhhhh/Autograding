@@ -20,9 +20,9 @@ public class DrawStructure11{
 
         // Determine the structure and initialize parameters
         int START_X = 50;;
-int START_Y = -50;;
+int START_Y = 50;;
 int NUM_ROWS = 6;
-int BRICK_WIDTH = 20;
+int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 20;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
