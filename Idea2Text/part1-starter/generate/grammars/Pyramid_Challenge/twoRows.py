@@ -60,7 +60,7 @@ public class DrawStructure{{
                 brick.setColor({BrickColorTwoRowsSecondRow});
             }}
 
-            add(brick);
+            canvas.add(brick);
         }}
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
