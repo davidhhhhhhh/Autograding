@@ -19,13 +19,13 @@ public class DrawStructure458{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize brick parameters for first row
-        int NUM_BRICKS_FIRST_ROW = 6;
+        int NUM_BRICKS_FIRST_ROW = 4;
 int BRICK_WIDTH_FIRST_ROW = 30;
 int BRICK_HEIGHT_FIRST_ROW = 20;
 int BRICK_SEP_FIRST_ROW = 0;
 int ROGUE_BRICK_INDEX_FIRST_ROW = -1;
-int START_X_FIRST_ROW = -50;
-int START_Y_FIRST_ROW = 100;
+int START_X_FIRST_ROW = 100;
+int START_Y_FIRST_ROW = -100;
 
         // Draw first row of bricks
         for (int i = 0; i < NUM_BRICKS_FIRST_ROW; i++) {
@@ -38,20 +38,20 @@ int START_Y_FIRST_ROW = 100;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setColor(Color.GRAY);
+                brick.setColor(Color.BLACK);
             }
 
             canvas.add(brick);
         }
 
         // Initialize brick parameters for second row
-        int NUM_BRICKS_SECOND_ROW = 6;
-int BRICK_WIDTH_SECOND_ROW = 40;
-int BRICK_HEIGHT_SECOND_ROW = 30;
+        int NUM_BRICKS_SECOND_ROW = 7;
+int BRICK_WIDTH_SECOND_ROW = 20;
+int BRICK_HEIGHT_SECOND_ROW = 20;
 int BRICK_SEP_SECOND_ROW = 0;
-int ROGUE_BRICK_INDEX_SECOND_ROW = -1;
-int START_X_SECOND_ROW = START_X_FIRST_ROW + 100;
-int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 150;
+int ROGUE_BRICK_INDEX_SECOND_ROW = 1;
+int START_X_SECOND_ROW = START_X_FIRST_ROW;
+int START_Y_SECOND_ROW = START_Y_FIRST_ROW + BRICK_HEIGHT_FIRST_ROW;
 
         // Draw second row of bricks
         for (int i = 0; i < NUM_BRICKS_SECOND_ROW; i++) {
@@ -64,10 +64,10 @@ int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 150;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setColor(Color.GRAY);
+                brick.setColor(Color.BLACK);
             }
 
-            add(brick);
+            canvas.add(brick);
         }
         // Save the canvas as an image
         saveCanvasAsImage(canvas);

@@ -20,7 +20,7 @@ public class DrawStructure176{
 
         // Initialize structure parameters
         int BRICKS_IN_BASE = 13;
-int BRICK_WIDTH = 80;
+int BRICK_WIDTH = 40;
 int BRICK_HEIGHT = 40;
 
         // Draw a pyramid
@@ -40,7 +40,7 @@ int BRICK_HEIGHT = 40;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.BLUE);
+                brick.setColor(Color.YELLOW);
                 canvas.add(brick);
             }
         }

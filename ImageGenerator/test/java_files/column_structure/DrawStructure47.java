@@ -21,13 +21,13 @@ public class DrawStructure47{
         // Determine the structure and initialize parameters
         int START_X = 50;
 int START_Y = 100;
-int NUM_COLUMNS = 3;
+int NUM_COLUMNS = 6;
 int BRICK_WIDTH = 20;
 int BRICK_HEIGHT = 20;
 int BRICK_SEP = 0;
-boolean isUpsideDown = false;
+boolean isUpsideDown = true;
 boolean isColumn = true;
-String input = "3, 2, 1";
+String input = "1, 2, 3, 4, 5, 6";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -46,7 +46,7 @@ String input = "3, 2, 1";
 
                 // Determine if the brick is filled
                 brick.setFilled(false);
-                brick.setColor(Color.BLACK);
+                brick.setColor(Color.GRAY);
 
                 canvas.add(brick);
             }

@@ -19,15 +19,15 @@ public class DrawStructure190{
         canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Initialize brick parameters for rows
-        int NUM_ROWS = 8;;
-int NUM_BRICKS_PER_ROW = 3;;
-int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 30;
-int BRICK_SEP = 10;
+        int NUM_ROWS = 7;;
+int NUM_BRICKS_PER_ROW = 7;;
+int BRICK_WIDTH = 40;
+int BRICK_HEIGHT = 20;
+int BRICK_SEP = 0;
 int ROW_SEP = 0;
-int ROGUE_ROW_INDEX = 2;
-int ROGUE_DIAGONAL_INDEX = 2;
-int START_X = 100;
+int ROGUE_ROW_INDEX = -1;
+int ROGUE_DIAGONAL_INDEX = 1;
+int START_X = -50;
 int START_Y = 50;
 boolean isRogueRow = false;
 boolean isRogueDiagonal = true;
@@ -45,7 +45,7 @@ boolean isRogueDiagonal = true;
                     brick.setColor(Color.RED);
                 } else {
                     brick.setFilled(true);
-                    brick.setColor(Color.BLUE);
+                    brick.setColor(Color.BLACK);
                 }
 
                 canvas.add(brick);
