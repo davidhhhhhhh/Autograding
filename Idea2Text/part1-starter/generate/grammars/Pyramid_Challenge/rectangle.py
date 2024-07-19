@@ -13,15 +13,15 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 
 public class DrawStructure{{
-    private static final int CANVAS_WIDTH = 600;
-    private static final int CANVAS_HEIGHT = 400;
-    private static final int IMAGE_WIDTH = 800;
-    private static final int IMAGE_HEIGHT = 600;
+    private static final int INNER_CANVAS_WIDTH = 600;
+    private static final int INNER_CANVAS_HEIGHT = 400;
+    private static final int OUTER_CANVAS_WIDTH = 800;
+    private static final int OUTER_CANVAS_HEIGHT = 600;
 
     public static void main(String[] args) {{
         // Create an off-screen GCanvas
         GCanvas canvas = new GCanvas();
-        canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize brick parameters for rows
         {InitializeBrickParametersRectangleRows}
@@ -49,40 +49,27 @@ public class DrawStructure{{
         saveCanvasAsImage(canvas);
     }}
     private static void saveCanvasAsImage(GCanvas canvas) {{
-        BufferedImage image = new BufferedImage(IMAGE_WIDTH, IMAGE_HEIGHT, BufferedImage.TYPE_INT_RGB);
-        Graphics g = image.getGraphics();
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
-
-        // Draw the current canvas content to the buffered image
-        BufferedImage canvasImage = new BufferedImage(CANVAS_WIDTH, CANVAS_HEIGHT, BufferedImage.TYPE_INT_RGB);
-        Graphics canvasGraphics = canvasImage.getGraphics();
-        canvasGraphics.setColor(Color.WHITE);
-        canvasGraphics.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        canvas.paint(canvasGraphics);
-
-        // Center the canvas on the image
-        int offsetX = (IMAGE_WIDTH - CANVAS_WIDTH) / 2;
-        int offsetY = (IMAGE_HEIGHT - CANVAS_HEIGHT) / 2;
-        g.drawImage(canvasImage, offsetX, offsetY, null);
-
-        // Draw a border around the canvas area
-        g.setColor(Color.BLACK);
-        g.drawRect(offsetX, offsetY, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-        // Generate a unique filename using a timestamp
-        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        String filename = "rectangle_" + timestamp + ".png";
-
-        try {{
-            // Write the buffered image to a file
-            ImageIO.write(image, "png", new File(filename));
-            System.out.println("Image saved as " + filename);
-        }} catch (Exception e) {{
-            e.printStackTrace();
-        }}
-    }}            
-}}''': 1
+                    BufferedImage image = new BufferedImage(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT, BufferedImage.TYPE_INT_RGB);
+                    Graphics g = image.getGraphics();
+                    g.setColor(Color.WHITE);
+                    g.fillRect(0, 0, OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
+    
+                    // Draw the current canvas content to the buffered image
+                    canvas.paint(g);
+    
+                    // Generate a unique filename using a timestamp
+                    String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+                    String filename = "rectangle_" + timestamp + ".png";
+    
+                    try {{
+                        // Write the buffered image to a file
+                        ImageIO.write(image, "png", new File(filename));
+                        System.out.println("Image saved as " + filename);
+                    }} catch (Exception e) {{
+                        e.printStackTrace();
+                    }}
+                }}            
+            }}''': 1
         })
 
     def render(self):
@@ -153,14 +140,16 @@ class InitializeBrickParametersRectangleRows(Decision):
             'int ROGUE_DIAGONAL_INDEX = 2;': 1  # Rogue diagonal at position 2
         })
         self.addChoice('startX', {
-            'int START_X = 50;': 1,
-            'int START_X = 100;': 1,
-            'int START_X = -50;': 1  # Potentially out of canvas
+            'int START_X = 150;': 1,
+            'int START_X = 200;': 1,
+            'int START_X = 750;': 1,
+            'int START_X = 50;': 1  # Potentially out of canvas
         })
         self.addChoice('startY', {
             'int START_Y = 50;': 1,
             'int START_Y = 100;': 1,
-            'int START_Y = -50;': 1  # Potentially out of canvas
+            'int START_Y = 400;': 1,
+            'int START_Y = 550;': 1  # Potentially out of canvas
         })
         self.addChoice('isRogueRow', {
             'boolean isRogueRow = true;': 1,
@@ -195,7 +184,7 @@ class BrickColorRectangle(Decision):
             'Color.GRAY': 2,
             'Color.BLUE': 1,
             'Color.GREEN': 1,
-            'Color.YELLOW': 1,
+            'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
             'Color.BLACK': 5
