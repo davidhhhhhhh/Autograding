@@ -13,15 +13,15 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 
 public class DrawStructure{{
-    private static final int CANVAS_WIDTH = 600;
-    private static final int CANVAS_HEIGHT = 400;
-    private static final int IMAGE_WIDTH = 800;
-    private static final int IMAGE_HEIGHT = 600;
+    private static final int INNER_CANVAS_WIDTH = 600;
+    private static final int INNER_CANVAS_HEIGHT = 400;
+    private static final int OUTER_CANVAS_WIDTH = 800;
+    private static final int OUTER_CANVAS_HEIGHT = 600;
 
     public static void main(String[] args) {{
         // Create an off-screen GCanvas
         GCanvas canvas = new GCanvas();
-        canvas.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Determine the structure and initialize parameters
         {InitializeStructureParametersColumn}
@@ -52,73 +52,52 @@ public class DrawStructure{{
         saveCanvasAsImage(canvas);
     }}
     private static void saveCanvasAsImage(GCanvas canvas) {{
-        BufferedImage image = new BufferedImage(IMAGE_WIDTH, IMAGE_HEIGHT, BufferedImage.TYPE_INT_RGB);
-        Graphics g = image.getGraphics();
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
-
-        // Draw the current canvas content to the buffered image
-        BufferedImage canvasImage = new BufferedImage(CANVAS_WIDTH, CANVAS_HEIGHT, BufferedImage.TYPE_INT_RGB);
-        Graphics canvasGraphics = canvasImage.getGraphics();
-        canvasGraphics.setColor(Color.WHITE);
-        canvasGraphics.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        canvas.paint(canvasGraphics);
-
-        // Center the canvas on the image
-        int offsetX = (IMAGE_WIDTH - CANVAS_WIDTH) / 2;
-        int offsetY = (IMAGE_HEIGHT - CANVAS_HEIGHT) / 2;
-        g.drawImage(canvasImage, offsetX, offsetY, null);
-
-        // Draw a border around the canvas area
-        g.setColor(Color.BLACK);
-        g.drawRect(offsetX, offsetY, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-        // Generate a unique filename using a timestamp
-        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        String filename = "column_structure_" + timestamp + ".png";
-
-        try {{
-            // Write the buffered image to a file
-            ImageIO.write(image, "png", new File(filename));
-            System.out.println("Image saved as " + filename);
-        }} catch (Exception e) {{
-            e.printStackTrace();
-        }}
-    }}            
-}}''': 1
+                    BufferedImage image = new BufferedImage(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT, BufferedImage.TYPE_INT_RGB);
+                    Graphics g = image.getGraphics();
+                    g.setColor(Color.WHITE);
+                    g.fillRect(0, 0, OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
+    
+                    // Draw the current canvas content to the buffered image
+                    canvas.paint(g);
+    
+                    // Generate a unique filename using a timestamp
+                    String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+                    String filename = "column_structure_" + timestamp + ".png";
+    
+                    try {{
+                        // Write the buffered image to a file
+                        ImageIO.write(image, "png", new File(filename));
+                        System.out.println("Image saved as " + filename);
+                    }} catch (Exception e) {{
+                        e.printStackTrace();
+                    }}
+                }}            
+            }}''': 1
         })
 
     def render(self):
         return self.getChoice('codeStructure')
 
 
-class SetCanvasSizeColumn(Decision):
-    def registerChoices(self):
-        self.addChoice('canvasWidth', {
-            '400': 2,
-            '600': 1
-        })
-        self.addChoice('canvasHeight', {
-            '260': 3,
-            '400': 1,
-            '600': 1
-        })
-
-    def render(self):
-        return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
-
-
 class InitializeStructureParametersColumn(Decision):
     def registerChoices(self):
         self.addChoice('startX', {
-            'int START_X = 50;': 1,
-            'int START_X = 100;': 1,
-            'int START_X = -50;': 1  # Potentially out of canvas
+            'int START_X = 100 + 50;': 1,
+            'int START_X = 100 + 100;': 1,
+            'int START_X = 200 + 100;': 1,
+            'int START_X = 300 + 100;': 3,
+            'int START_X = 100;': 2,
+            'int START_X = 100 - 50;': 1  # Potentially out of canvas
         })
         self.addChoice('startY', {
-            'int START_Y = 50;': 1,
+            'int START_Y = 100 + 400;': 3,
+            'int START_Y = 100 + 350;': 2,
+            'int START_Y = 100 + 300;': 2,
+            'int START_Y = 100 + 100;': 2,
+            'int START_Y = 100 + 50;': 2,
             'int START_Y = 100;': 1,
-            'int START_Y = -50;': 1  # Potentially out of canvas
+            'int START_Y = 100 - 50;': 1,
+            'int START_Y = 100 + 450;': 1  # Potentially out of canvas
         })
         self.addChoice('structure', {
             'column': 2,
@@ -133,7 +112,7 @@ class InitializeStructureParametersColumn(Decision):
             '8': 1
         })
         self.addChoice('numBricksPerColumn', {
-            'constant': 2,
+            'constant': 3,
             'varying': 1
         })
         self.addChoice('brickWidth', {
