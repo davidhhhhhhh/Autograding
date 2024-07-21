@@ -20,14 +20,14 @@ public class DrawStructure137{
 
         // Determine the structure and initialize parameters
         int START_X = 100 + 100;
-int START_Y = 100 + 400;
-int NUM_COLUMNS = 6;
+int START_Y = 100 + 50;
+int NUM_COLUMNS = 7;
 int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 10;
 int BRICK_SEP = 5;
-boolean isUpsideDown = false;
+boolean isUpsideDown = true;
 boolean isColumn = true;
-String input = "6, 6, 6, 6, 6, 6";
+String input = "7, 7, 7, 7, 7, 7, 7";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");

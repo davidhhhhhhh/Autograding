@@ -19,16 +19,16 @@ public class DrawStructure323{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Determine the structure and initialize parameters
-        int START_X = 150;;
-int START_Y = 500;;
-int NUM_ROWS = 6;
+        int START_X = 750;;
+int START_Y = 50;;
+int NUM_ROWS = 4;
 int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 30;
+int BRICK_HEIGHT = 10;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
 int HORIZONTAL_OFFSET = -20;
 boolean isUpsideDown = false;
-String input = "1, 2, 3, 4, 5, 6";
+String input = "1, 2, 3, 4";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");

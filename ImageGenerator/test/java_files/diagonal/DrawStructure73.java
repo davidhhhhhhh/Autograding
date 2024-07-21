@@ -19,15 +19,15 @@ public class DrawStructure73{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize brick parameters
-        int NUM_BRICKS = 3;
-int BRICK_WIDTH = 30;
+        int NUM_BRICKS = 5;
+int BRICK_WIDTH = 20;
 int BRICK_HEIGHT = 10;
 int BRICK_SEP = 0;
 int ROGUE_BRICK_INDEX = -1;
-int START_X = 300 + 100;
-int START_Y = 100 + 50;
-boolean isDiagonal = true;
-boolean isUpRight = true;
+int START_X = 100;
+int START_Y = 100 + 400;
+boolean isDiagonal = false;
+boolean isUpRight = false;
 
         // Draw bricks
         for (int i = 0; i < NUM_BRICKS; i++) {

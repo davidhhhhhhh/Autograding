@@ -19,14 +19,14 @@ public class DrawStructure80{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 12;
+        int BRICKS_IN_BASE = 14;
 int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 10;
-int OFFSET_X = 40;
-int OFFSET_Y = -30;
+int OFFSET_X = 20;
+int OFFSET_Y = -20;
 
         // Optionally add centering assist lines
-        // No assist lines by default
+        canvas.add(new GLine(0, canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight() / 2));
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
@@ -45,7 +45,7 @@ int OFFSET_Y = -30;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.BLUE);
+                brick.setColor(Color.GRAY);
                 canvas.add(brick);
             }
         }

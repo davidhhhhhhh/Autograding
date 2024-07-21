@@ -19,7 +19,7 @@ public class DrawStructure211{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 13;
+        int BRICKS_IN_BASE = 14;
 int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 10;
 

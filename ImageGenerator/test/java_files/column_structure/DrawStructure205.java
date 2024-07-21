@@ -19,15 +19,15 @@ public class DrawStructure205{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Determine the structure and initialize parameters
-        int START_X = 300 + 100;
-int START_Y = 100 + 50;
-int NUM_COLUMNS = 8;
+        int START_X = 100 + 50;
+int START_Y = 100 + 400;
+int NUM_COLUMNS = 7;
 int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 10;
 int BRICK_SEP = 5;
 boolean isUpsideDown = true;
 boolean isColumn = true;
-String input = "1, 2, 3, 4, 5, 6, 7, 8";
+String input = "7, 7, 7, 7, 7, 7, 7";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
