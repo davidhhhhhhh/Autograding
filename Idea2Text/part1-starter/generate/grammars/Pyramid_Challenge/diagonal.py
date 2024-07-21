@@ -48,12 +48,19 @@ public class DrawStructure{{
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             }} else {{
-                brick.setFilled(true);
+                {SetBrickFilledWall}
                 brick.setColor({BrickColorDiagonal});
             }}
 
             canvas.add(brick);
         }}
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -85,22 +92,6 @@ public class DrawStructure{{
         return self.getChoice('codeStructure')
 
 
-class SetCanvasSizeDiagonal(Decision):
-    def registerChoices(self):
-        self.addChoice('canvasWidth', {
-            '400': 2,
-            '600': 1
-        })
-        self.addChoice('canvasHeight', {
-            '260': 3,
-            '400': 1,
-            '600': 1
-        })
-
-    def render(self):
-        return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
-
-
 class InitializeBrickParametersDiagonal(Decision):
     def registerChoices(self):
         self.addChoice('numBricks', {
@@ -110,12 +101,12 @@ class InitializeBrickParametersDiagonal(Decision):
             'int NUM_BRICKS = 6;': 1
         })
         self.addChoice('brickWidth', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeight', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
@@ -125,7 +116,7 @@ class InitializeBrickParametersDiagonal(Decision):
             'int BRICK_SEP = 10;': 1
         })
         self.addChoice('rogueBrickIndex', {
-            'int ROGUE_BRICK_INDEX = -1;': 3,  # No rogue brick
+            'int ROGUE_BRICK_INDEX = -1;': 20,  # No rogue brick
             'int ROGUE_BRICK_INDEX = 1;': 1,  # Rogue brick at position 1
             'int ROGUE_BRICK_INDEX = 2;': 1  # Rogue brick at position 2
         })
@@ -173,13 +164,13 @@ class InitializeBrickParametersDiagonal(Decision):
 class BrickColorDiagonal(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
-            'Color.GRAY': 2,
+            'Color.GRAY': 1,
             'Color.BLUE': 1,
             'Color.GREEN': 1,
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):

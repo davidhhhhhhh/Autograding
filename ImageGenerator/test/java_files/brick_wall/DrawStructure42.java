@@ -20,17 +20,17 @@
                     canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
     
                     // Initialize structure parameters
-                    int NUM_COLUMNS = 13;
+                    int NUM_COLUMNS = 53;
 int NUM_ROWS = 60;
-int BRICK_WIDTH = 120;
+int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 20;
     
                     // Draw rows of bricks covering the entire screen without offset
                     for (int row = 0; row < NUM_ROWS; row++) {
                         for (int col = 0; col < NUM_COLUMNS; col++) {
                             // 100 means the offset between outer and inner canvas
-                            int x = - 30 + col * BRICK_WIDTH + (row % 2 == 0 ? 0: BRICK_WIDTH / 2);
-                            int y = 500 - row * BRICK_HEIGHT; 
+                            int x = - 100 + col * BRICK_WIDTH + (row % 2 == 0 ? 0: BRICK_WIDTH / 2);
+                            int y = 500 - (row + 1) * BRICK_HEIGHT; 
                             GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
     
                             // Determine if the brick is filled

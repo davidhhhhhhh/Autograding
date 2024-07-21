@@ -48,6 +48,13 @@ public class DrawStructure{{
                 canvas.add(brick);
             }}
         }}
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -104,30 +111,30 @@ class InitializeStructureParametersColumn(Decision):
             'diagonal': 1
         })
         self.addChoice('numColumns', {
-            '3': 2,
+            '3': 1,
             '4': 1,
             '5': 1,
             '6': 1,
-            '7': 1,
-            '8': 1
+            '7': 2,
+            '8': 3
         })
         self.addChoice('numBricksPerColumn', {
             'constant': 3,
             'varying': 1
         })
         self.addChoice('brickWidth', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeight', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparation', {
-            '5': 1,
-            '0': 3,
+            '15': 1,
+            '5': 5,
             '10': 1
         })
         self.addChoice('isUpsideDown', {
@@ -169,13 +176,13 @@ class InitializeStructureParametersColumn(Decision):
 class BrickColorColumn(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
-            'Color.GRAY': 2,
+            'Color.GRAY': 1,
             'Color.BLUE': 1,
             'Color.GREEN': 1,
             'Color.YELLOW': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):

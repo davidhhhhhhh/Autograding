@@ -1,5 +1,6 @@
 from ideaToText import Decision
 
+
 class PyramidLike(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
@@ -57,6 +58,13 @@ public class DrawStructure{{
                 }}
             }}
         }}
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -88,22 +96,6 @@ public class DrawStructure{{
         return self.getChoice('codeStructure')
 
 
-class SetCanvasSizeRoughlySymmetric(Decision):
-    def registerChoices(self):
-        self.addChoice('canvasWidth', {
-            '400': 2,
-            '600': 1
-        })
-        self.addChoice('canvasHeight', {
-            '260': 3,
-            '400': 1,
-            '600': 1
-        })
-
-    def render(self):
-        return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
-
-
 class InitializeStructureParametersRoughlySymmetric(Decision):
     def registerChoices(self):
         self.addChoice('startX', {
@@ -127,23 +119,23 @@ class InitializeStructureParametersRoughlySymmetric(Decision):
             '8': 5
         })
         self.addChoice('brickWidth', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeight', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparation', {
             '5': 1,
-            '0': 1,
+            '0': 10,
             '10': 1
         })
         self.addChoice('rowSeparation', {
             '5': 1,
-            '0': 1,
+            '0': 10,
             '10': 1
         })
         self.addChoice('horizontalOffset', {
@@ -200,7 +192,7 @@ class BrickColorRoughlySymmetric(Decision):
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):

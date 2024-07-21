@@ -46,6 +46,13 @@ public class DrawStructure{{
                 canvas.add(brick);
             }}
         }}
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -100,12 +107,12 @@ class InitializeStructureParametersPyramid(Decision):
             '10': 1
         })
         self.addChoice('brickWidth', {
-            '40': 4,
-            '80': 1
+            '30': 10,
+            '40': 1
         })
         self.addChoice('brickHeight', {
-            '20': 4,
-            '40': 1
+            '10': 10,
+            '20': 1
         })
 
     def render(self):

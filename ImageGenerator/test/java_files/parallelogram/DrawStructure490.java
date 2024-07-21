@@ -19,19 +19,19 @@ public class DrawStructure490{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize brick parameters for rows
-        int NUM_ROWS = 4;;
-int NUM_BRICKS_PER_ROW = 8;;
-int OFFSET = -20;;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 40;
-int BRICK_SEP = 0;
+        int NUM_ROWS = 6;;
+int NUM_BRICKS_PER_ROW = 6;;
+int OFFSET = 20;;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 10;
+int BRICK_SEP = 5;
 int ROW_SEP = 0;
 int ROGUE_ROW_INDEX = -1;
-int ROGUE_DIAGONAL_INDEX = 2;
-int START_X = 200;
+int ROGUE_DIAGONAL_INDEX = -1;
+int START_X = 150;
 int START_Y = 400;
 boolean isRogueRow = false;
-boolean isRogueDiagonal = true;
+boolean isRogueDiagonal = false;
 
         // Draw rows of bricks with horizontal offset
         for (int row = 0; row < NUM_ROWS; row++) {
@@ -49,12 +49,19 @@ boolean isRogueDiagonal = true;
                     brick.setFilled(false);
                     brick.setColor(Color.RED);
                 } else {
-                    brick.setColor(Color.GRAY);
+                    brick.setColor(Color.BLACK);
                 }
 
                 canvas.add(brick);
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

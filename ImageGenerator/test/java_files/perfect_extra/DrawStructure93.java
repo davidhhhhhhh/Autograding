@@ -19,9 +19,9 @@ public class DrawStructure93{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 14;
-int BRICK_WIDTH = 80;
-int BRICK_HEIGHT = 40;
+        int BRICKS_IN_BASE = 11;
+int BRICK_WIDTH = 40;
+int BRICK_HEIGHT = 10;
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
@@ -40,10 +40,17 @@ int BRICK_HEIGHT = 40;
                 // Determine if the brick is filled
                 brick.setFilled(false);
 
-                brick.setColor(Color.RED);
+                brick.setColor(Color.BLUE);
                 canvas.add(brick);
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

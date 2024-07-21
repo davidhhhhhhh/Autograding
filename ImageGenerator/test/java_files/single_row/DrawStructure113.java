@@ -19,11 +19,11 @@ public class DrawStructure113{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize starting position and other parameters
-        int NUM_BRICKS = 3;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 30;
+        int NUM_BRICKS = 6;
+int BRICK_WIDTH = 20;
+int BRICK_HEIGHT = 10;
 int BRICK_SEP = 0;
-int ROGUE_BRICK_INDEX = 1;
+int ROGUE_BRICK_INDEX = -1;
 int START_Y = 450;
 
         // Draw bricks
@@ -37,12 +37,18 @@ int START_Y = 450;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setColor(Color.MAGENTA);
+                brick.setColor(Color.BLACK);
             }
 
             canvas.add(brick);
         }
-    // Save the canvas as an image
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }
     private static void saveCanvasAsImage(GCanvas canvas) {
