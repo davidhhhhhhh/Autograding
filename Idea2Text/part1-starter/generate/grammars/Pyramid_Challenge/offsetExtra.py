@@ -140,7 +140,7 @@ class BrickColorPyramidExtra(Decision):
             'Color.GREEN': 1,
             'Color.RED': 1,
             'Color.ORANGE': 1,
-            'Color.MAGENTA': 1
+            'Color.YELLOW': 1
         })
 
     def render(self):

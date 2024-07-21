@@ -22,11 +22,11 @@ public class DrawStructure202{
         int NUM_BRICKS = 6;
 int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 10;
-int BRICK_SEP = 0;
+int BRICK_SEP = 10;
 int ROGUE_BRICK_INDEX = -1;
-int START_X = 300 + 100;
-int START_Y = 100 - 50;
-boolean isDiagonal = false;
+int START_X = 100 + 50;
+int START_Y = 100 + 350;
+boolean isDiagonal = true;
 boolean isUpRight = false;
 
         // Draw bricks
@@ -51,8 +51,8 @@ boolean isUpRight = false;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setFilled(true);
-                brick.setColor(Color.BLACK);
+                brick.setFilled(false);
+                brick.setColor(Color.GRAY);
             }
 
             canvas.add(brick);

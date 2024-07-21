@@ -19,11 +19,11 @@ public class DrawStructure340{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize structure parameters
-        int BRICKS_IN_BASE = 12;
+        int BRICKS_IN_BASE = 14;
 int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 20;
-int OFFSET_X = 20;
-int OFFSET_Y = 20;
+int BRICK_HEIGHT = 10;
+int OFFSET_X = 40;
+int OFFSET_Y = 10;
 
         // Optionally add centering assist lines
         // No assist lines by default
@@ -43,7 +43,7 @@ int OFFSET_Y = 20;
                 GRect brick = new GRect(x, rowY, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
+                brick.setFilled(false);
                 canvas.add(brick);
             }
         }

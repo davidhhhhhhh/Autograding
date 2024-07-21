@@ -20,16 +20,16 @@ public class DrawStructure248{
 
         // Determine the shape and initialize parameters
         int START_X = 750;
-int START_Y = 550;
-int NUM_ROWS = 10;
+int START_Y = 500;
+int NUM_ROWS = 15;
 int NUM_BRICKS_BASE = 15;
 int BRICK_WIDTH = 30;
 int BRICK_HEIGHT = 10;
 int BRICK_SEP = 0;
-int ROW_SEP = 0;
+int ROW_SEP = 5;
 boolean isUpsideDown = true;
-boolean isRightTriangle = false;
-String input = "15, 14, 13, 12, 11, 10, 9, 8, 7, 6";
+boolean isRightTriangle = true;
+String input = "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");

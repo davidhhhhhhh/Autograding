@@ -25,6 +25,7 @@ class Start(Decision):
             'perfect': 1,
             'perfect_extra': 1,
             'brick_wall': 1,
+            'offtrack': 1
         })
 
         # Choices have two parts, an identifier and a dictionary
@@ -50,7 +51,8 @@ class Start(Decision):
             'perfect': 'Perfect',
             'brick_wall': 'BrickWall',
             'offset_extra': 'OffsetExtra',
-            'perfect_extra': 'PerfectExtra'
+            'perfect_extra': 'PerfectExtra',
+            'offtrack': 'Offtrack'
         }
 
         strategy = self.getChoice('strategies')
