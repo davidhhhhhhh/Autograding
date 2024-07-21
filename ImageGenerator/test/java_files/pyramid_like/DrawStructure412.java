@@ -21,16 +21,16 @@ public class DrawStructure412{
 
         // Initialize structure parameters
         int START_X = 50;
-int START_Y = 350;
-int NUM_ROWS = 6;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 20;
-int BRICK_SEP = 10;
-int ROW_SEP = 0;
+int START_Y = 550;
+int NUM_ROWS = 8;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 10;
+int BRICK_SEP = 0;
+int ROW_SEP = 5;
 int HORIZONTAL_OFFSET = 20;
-int HOLE_PROBABILITY = 2;
-boolean isUpsideDown = false;
-String input = "1, 2, 3, 4, 5, 6";
+int HOLE_PROBABILITY = 3;
+boolean isUpsideDown = true;
+String input = "8, 7, 6, 5, 4, 3, 2, 1";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -56,12 +56,19 @@ String input = "1, 2, 3, 4, 5, 6";
 
                     // Determine if the brick is filled
                     brick.setFilled(false);
-                    brick.setColor(Color.MAGENTA);
+                    brick.setColor(Color.GRAY);
 
                     canvas.add(brick);
                 }
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

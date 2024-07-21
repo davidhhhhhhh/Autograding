@@ -19,15 +19,23 @@ public class DrawStructure207{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
             
         // Create a rectangle with the specified position 
-        int x = 50; int y = 50;
+        int x = 150; int y = 350;
         // Specify size of the rectangle 
-        GRect rect = new GRect(x, y, 100, 200);
+        GRect rect = new GRect(x, y, 10, 30);
         // Add color, optional 
         //no color
 
         // Add the rectangle to the canvas
         canvas.add(rect);
-    // Save the canvas as an image
+        
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
+        // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }
     private static void saveCanvasAsImage(GCanvas canvas) {

@@ -19,13 +19,13 @@ public class DrawStructure429{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize brick parameters
-        int NUM_BRICKS = 3;
+        int NUM_BRICKS = 4;
 int BRICK_WIDTH = 30;
-int BRICK_HEIGHT = 30;
-int BRICK_SEP = 0;
+int BRICK_HEIGHT = 10;
+int BRICK_SEP = 10;
 int ROGUE_BRICK_INDEX = 2;
-int START_X = 100 - 50;
-int START_Y = 100 + 300;
+int START_X = 100 + 100;
+int START_Y = 100 + 50;
 boolean isDiagonal = true;
 boolean isUpRight = false;
 
@@ -51,12 +51,19 @@ boolean isUpRight = false;
                 brick.setFilled(true);
                 brick.setColor(Color.RED);
             } else {
-                brick.setFilled(true);
+                brick.setFilled(false);
                 brick.setColor(Color.BLACK);
             }
 
             canvas.add(brick);
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

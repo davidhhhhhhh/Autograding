@@ -19,17 +19,17 @@ public class DrawStructure404{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Initialize brick parameters for rows
-        int NUM_ROWS = 3;;
-int NUM_BRICKS_PER_ROW = 6;;
-int BRICK_WIDTH = 20;
-int BRICK_HEIGHT = 20;
-int BRICK_SEP = 10;
+        int NUM_ROWS = 6;;
+int NUM_BRICKS_PER_ROW = 7;;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 10;
+int BRICK_SEP = 0;
 int ROW_SEP = 0;
 int ROGUE_ROW_INDEX = -1;
-int ROGUE_DIAGONAL_INDEX = -1;
+int ROGUE_DIAGONAL_INDEX = 1;
 int START_X = 50;
-int START_Y = 50;
-boolean isRogueRow = false;
+int START_Y = 400;
+boolean isRogueRow = true;
 boolean isRogueDiagonal = false;
 
         // Draw rows of bricks
@@ -41,16 +41,23 @@ boolean isRogueDiagonal = false;
 
                 // Add a rogue row/diagonal condition
                 if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {
-                    brick.setFilled(true);
+                    brick.setFilled(false);
                     brick.setColor(Color.RED);
                 } else {
-                    brick.setFilled(true);
-                    brick.setColor(Color.ORANGE);
+                    brick.setFilled(false);
+                    brick.setColor(Color.BLACK);
                 }
 
                 canvas.add(brick);
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

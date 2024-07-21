@@ -19,17 +19,17 @@ public class DrawStructure17{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Determine the shape and initialize parameters
-        int START_X = 750;
-int START_Y = 550;
-int NUM_ROWS = 10;
-int NUM_BRICKS_BASE = 13;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 30;
+        int START_X = 150;
+int START_Y = 500;
+int NUM_ROWS = 14;
+int NUM_BRICKS_BASE = 14;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 10;
 int BRICK_SEP = 0;
 int ROW_SEP = 0;
-boolean isUpsideDown = false;
-boolean isRightTriangle = false;
-String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
+boolean isUpsideDown = true;
+boolean isRightTriangle = true;
+String input = "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -48,11 +48,18 @@ String input = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
 
                 // Determine if the brick is filled
                 brick.setFilled(false);
-                brick.setColor(Color.MAGENTA);
+                brick.setColor(Color.BLACK);
 
                 canvas.add(brick);
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

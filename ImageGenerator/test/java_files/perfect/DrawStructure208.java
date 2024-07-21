@@ -20,8 +20,8 @@ public class DrawStructure208{
 
         // Initialize structure parameters
         int BRICKS_IN_BASE = 11;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 20;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 10;
 
         // Draw a pyramid
         for (int i = 0; i < BRICKS_IN_BASE; i++) {
@@ -43,6 +43,13 @@ int BRICK_HEIGHT = 20;
                 canvas.add(brick);
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }

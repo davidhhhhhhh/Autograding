@@ -19,15 +19,15 @@ public class DrawStructure390{
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
         // Determine the structure and initialize parameters
-        int START_X = 100 - 50;
-int START_Y = 100 + 50;
-int NUM_COLUMNS = 6;
-int BRICK_WIDTH = 40;
-int BRICK_HEIGHT = 20;
-int BRICK_SEP = 0;
-boolean isUpsideDown = true;
-boolean isColumn = false;
-String input = "1, 2, 3, 4, 5, 6";
+        int START_X = 300 + 100;
+int START_Y = 100 + 350;
+int NUM_COLUMNS = 8;
+int BRICK_WIDTH = 30;
+int BRICK_HEIGHT = 10;
+int BRICK_SEP = 15;
+boolean isUpsideDown = false;
+boolean isColumn = true;
+String input = "8, 8, 8, 8, 8, 8, 8, 8";
         
         // Convert String to int array 
         String[] stringArray = input.split(",");
@@ -45,12 +45,19 @@ String input = "1, 2, 3, 4, 5, 6";
                 GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 
                 // Determine if the brick is filled
-                brick.setFilled(true);
+                brick.setFilled(false);
                 brick.setColor(Color.BLACK);
 
                 canvas.add(brick);
             }
         }
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }
