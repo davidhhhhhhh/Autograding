@@ -158,14 +158,14 @@ public class DrawStructure{{
 class InitializeStructureParametersBrickWall(Decision):
     def registerChoices(self):
         self.addChoice('brickWidth', {
-            '40': 3,
+            '30': 7,
             '60': 1,
             '80': 1,
             '100': 1
         })
         self.addChoice('brickHeight', {
-            '20': 3,
-            '10': 1,
+            '20': 1,
+            '10': 7,
             '40': 1,
             '50': 1
         })
@@ -195,7 +195,7 @@ class BrickColorBrickWall(Decision):
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 10
+            'Color.BLACK': 50
         })
 
     def render(self):
@@ -216,14 +216,14 @@ class SetBrickFilledWall(Decision):
 class InitializeStructureParametersBrickWallWholeScreen(Decision):
     def registerChoices(self):
         self.addChoice('brickWidth', {
-            '30': 5,
+            '30': 30,
             '60': 1,
             '80': 1,
             '120': 1
         })
         self.addChoice('brickHeight', {
             '20': 1,
-            '10': 5,
+            '10': 30,
             '40': 1,
             '30': 1
         })

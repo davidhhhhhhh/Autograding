@@ -48,6 +48,13 @@ public class DrawStructure{{
                 canvas.add(brick);
             }}
         }}
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -101,23 +108,23 @@ class InitializeStructureParametersRightTriangleHorizontalOffset(Decision):
             '7': 5
         })
         self.addChoice('brickWidth', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeight', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparation', {
             '5': 1,
-            '0': 5,
+            '0': 20,
             '10': 1
         })
         self.addChoice('rowSeparation', {
             '5': 1,
-            '0': 5,
+            '0': 20,
             '10': 1
         })
         self.addChoice('horizontalOffset', {
@@ -161,7 +168,7 @@ class InitializeStructureParametersRightTriangleHorizontalOffset(Decision):
 class SetBrickFilled(Decision):
     def registerChoices(self):
         self.addChoice('brickFilled', {
-            'brick.setFilled(false);': 5,
+            'brick.setFilled(false);': 10,
             'brick.setFilled(true);': 1
         })
 
@@ -172,7 +179,7 @@ class SetBrickFilled(Decision):
 class SetRogueBrickFilled(Decision):
     def registerChoices(self):
         self.addChoice('rogueBrickFilled', {
-            'brick.setFilled(false);': 3,
+            'brick.setFilled(false);': 10,
             'brick.setFilled(true);': 1
         })
 
@@ -189,7 +196,7 @@ class BrickColorRightTriangleHorizontalOffset(Decision):
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):

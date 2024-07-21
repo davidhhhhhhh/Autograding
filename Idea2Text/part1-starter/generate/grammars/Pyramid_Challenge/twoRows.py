@@ -63,6 +63,14 @@ public class DrawStructure{{
 
             canvas.add(brick);
         }}
+        
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -102,25 +110,26 @@ class InitializeBrickParametersTwoRowsFirstRow(Decision):
             'int NUM_BRICKS_FIRST_ROW = 5;': 2,
             'int NUM_BRICKS_FIRST_ROW = 6;': 3,
             'int NUM_BRICKS_FIRST_ROW = 7;': 4,
-            'int NUM_BRICKS_FIRST_ROW = 8;': 5
+            'int NUM_BRICKS_FIRST_ROW = 8;': 5,
+            'int NUM_BRICKS_FIRST_ROW = 15;': 5
         })
         self.addChoice('brickWidthFirstRow', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeightFirstRow', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparationFirstRow', {
             'int BRICK_SEP_FIRST_ROW = 5;': 1,
-            'int BRICK_SEP_FIRST_ROW = 0;': 5,
+            'int BRICK_SEP_FIRST_ROW = 0;': 20,
             'int BRICK_SEP_FIRST_ROW = 10;': 1
         })
         self.addChoice('rogueBrickIndexFirstRow', {
-            'int ROGUE_BRICK_INDEX_FIRST_ROW = -1;': 3,  # No rogue brick
+            'int ROGUE_BRICK_INDEX_FIRST_ROW = -1;': 20,  # No rogue brick
             'int ROGUE_BRICK_INDEX_FIRST_ROW = 1;': 1,  # Rogue brick at position 1
             'int ROGUE_BRICK_INDEX_FIRST_ROW = 2;': 1  # Rogue brick at position 2
         })
@@ -133,10 +142,10 @@ class InitializeBrickParametersTwoRowsFirstRow(Decision):
             'int START_X_FIRST_ROW = 50;': 1
         })
         self.addChoice('startYFirstRow', {
-            'int START_Y_FIRST_ROW = 450;': 2,
-            'int START_Y_FIRST_ROW = 500;': 1,
+            'int START_Y_FIRST_ROW = 450;': 1,
+            'int START_Y_FIRST_ROW = 500;': 20,
             'int START_Y_FIRST_ROW = 350;': 1,
-            'int START_Y_FIRST_ROW = 50;': 2,
+            'int START_Y_FIRST_ROW = 250;': 1,
             'int START_Y_FIRST_ROW = 550;': 1,
             'int START_Y_FIRST_ROW = 150;': 1
         })
@@ -164,35 +173,36 @@ class InitializeBrickParametersTwoRowsSecondRow(Decision):
             'int NUM_BRICKS_SECOND_ROW = 8;': 5
         })
         self.addChoice('brickWidthSecondRow', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeightSecondRow', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparationSecondRow', {
             'int BRICK_SEP_SECOND_ROW = 5;': 1,
-            'int BRICK_SEP_SECOND_ROW = 0;': 5,
+            'int BRICK_SEP_SECOND_ROW = 0;': 20,
             'int BRICK_SEP_SECOND_ROW = 10;': 1
         })
         self.addChoice('rogueBrickIndexSecondRow', {
-            'int ROGUE_BRICK_INDEX_SECOND_ROW = -1;': 3,  # No rogue brick
+            'int ROGUE_BRICK_INDEX_SECOND_ROW = -1;': 20,  # No rogue brick
             'int ROGUE_BRICK_INDEX_SECOND_ROW = 1;': 1,  # Rogue brick at position 1
             'int ROGUE_BRICK_INDEX_SECOND_ROW = 2;': 1  # Rogue brick at position 2
         })
         self.addChoice('startXSecondRow', {
-            'int START_X_SECOND_ROW = START_X_FIRST_ROW;': 2,
+            'int START_X_SECOND_ROW = START_X_FIRST_ROW;': 1,
             'int START_X_SECOND_ROW = START_X_FIRST_ROW + 100;': 1,
             'int START_X_SECOND_ROW = START_X_FIRST_ROW + 50;': 1
         })
         self.addChoice('startYSecondRow', {
-            'int START_Y_SECOND_ROW = START_Y_FIRST_ROW + BRICK_HEIGHT_FIRST_ROW;': 5,
+            'int START_Y_SECOND_ROW = START_Y_FIRST_ROW - BRICK_HEIGHT_FIRST_ROW;': 16,
             'int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 150;': 1,
             'int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 200;': 1,
-            'int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 250;': 1
+            'int START_Y_SECOND_ROW = START_Y_FIRST_ROW + 250;': 1,
+            'int START_Y_SECOND_ROW = START_Y_FIRST_ROW + BRICK_HEIGHT_FIRST_ROW;': 5,
         })
 
     def render(self):
@@ -216,7 +226,7 @@ class BrickColorTwoRowsFirstRow(Decision):
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):
@@ -226,13 +236,13 @@ class BrickColorTwoRowsFirstRow(Decision):
 class BrickColorTwoRowsSecondRow(Decision):
     def registerChoices(self):
         self.addChoice('brickColor', {
-            'Color.GRAY': 2,
+            'Color.GRAY': 1,
             'Color.BLUE': 1,
             'Color.GREEN': 1,
             'Color.YELLOW': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):

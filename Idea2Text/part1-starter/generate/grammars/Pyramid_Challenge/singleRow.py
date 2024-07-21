@@ -42,7 +42,13 @@ public class DrawStructure{{
 
             canvas.add(brick);
         }}
-    // Save the canvas as an image
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
     private static void saveCanvasAsImage(GCanvas canvas) {{
@@ -76,33 +82,37 @@ public class DrawStructure{{
 class InitializeBrickParametersSingleRow(Decision):
     def registerChoices(self):
         self.addChoice('numBricks', {
-            'int NUM_BRICKS = 3;': 2,
+            'int NUM_BRICKS = 3;': 1,
             'int NUM_BRICKS = 4;': 1,
             'int NUM_BRICKS = 5;': 1,
-            'int NUM_BRICKS = 6;': 1
+            'int NUM_BRICKS = 6;': 5,
+            'int NUM_BRICKS = 7;': 5,
+            'int NUM_BRICKS = 8;': 5,
+            'int NUM_BRICKS = 16;': 5,
+            'int NUM_BRICKS = 20;': 4,
         })
         self.addChoice('brickWidth', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeight', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparation', {
             'int BRICK_SEP = 5;': 1,
-            'int BRICK_SEP = 0;': 3,
+            'int BRICK_SEP = 0;': 20,
             'int BRICK_SEP = 10;': 1
         })
         self.addChoice('rogueBrickIndex', {
-            'int ROGUE_BRICK_INDEX = -1;': 3,  # No rogue brick
+            'int ROGUE_BRICK_INDEX = -1;': 20,  # No rogue brick
             'int ROGUE_BRICK_INDEX = 1;': 1,  # Rogue brick at position 1
             'int ROGUE_BRICK_INDEX = 2;': 1  # Rogue brick at position 2
         })
         self.addChoice('startYPosition', {
-            'int START_Y = 450;': 3,  # High probability to start at the bottom
+            'int START_Y = 450;': 20,  # High probability to start at the bottom
             'int START_Y = 250;': 1,
             'int START_Y = 50;': 1,
             'int START_Y = 550;': 1
@@ -128,7 +138,7 @@ class BrickColorSingleRow(Decision):
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):

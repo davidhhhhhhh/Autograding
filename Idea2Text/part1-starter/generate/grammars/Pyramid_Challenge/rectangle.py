@@ -35,16 +35,23 @@ public class DrawStructure{{
 
                 // Add a rogue row/diagonal condition
                 if ((row == ROGUE_ROW_INDEX && isRogueRow) || (i == ROGUE_DIAGONAL_INDEX && isRogueDiagonal)) {{
-                    brick.setFilled(true);
+                    {SetBrickFilledWall}
                     brick.setColor(Color.RED);
                 }} else {{
-                    brick.setFilled(true);
+                    {SetBrickFilledWall}
                     brick.setColor({BrickColorRectangle});
                 }}
 
                 canvas.add(brick);
             }}
         }}
+        // Draw the inner canvas boundary
+        GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
+                                               (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
+                                               INNER_CANVAS_WIDTH, INNER_CANVAS_HEIGHT);
+        innerCanvasBoundary.setColor(Color.BLACK);
+        canvas.add(innerCanvasBoundary);
+        
         // Save the canvas as an image
         saveCanvasAsImage(canvas);
     }}
@@ -76,22 +83,6 @@ public class DrawStructure{{
         return self.getChoice('codeStructure')
 
 
-class SetCanvasSizeRectangle(Decision):
-    def registerChoices(self):
-        self.addChoice('canvasWidth', {
-            '400': 2,
-            '600': 1
-        })
-        self.addChoice('canvasHeight', {
-            '260': 3,
-            '400': 1,
-            '600': 1
-        })
-
-    def render(self):
-        return 'setSize({}, {});'.format(self.getChoice('canvasWidth'), self.getChoice('canvasHeight'))
-
-
 class InitializeBrickParametersRectangleRows(Decision):
     def registerChoices(self):
         self.addChoice('numRows', {
@@ -110,32 +101,32 @@ class InitializeBrickParametersRectangleRows(Decision):
             'int NUM_BRICKS_PER_ROW = 7;': 5
         })
         self.addChoice('brickWidth', {
-            '40': 2,
-            '30': 1,
+            '40': 1,
+            '30': 20,
             '20': 1
         })
         self.addChoice('brickHeight', {
-            '20': 2,
+            '10': 20,
             '30': 1,
             '40': 1
         })
         self.addChoice('brickSeparation', {
-            'int BRICK_SEP = 5;': 1,
-            'int BRICK_SEP = 0;': 5,
-            'int BRICK_SEP = 10;': 1
+            'int BRICK_SEP = 1;': 1,
+            'int BRICK_SEP = 0;': 50,
+            'int BRICK_SEP = 2;': 1
         })
         self.addChoice('rowSeparation', {
             'int ROW_SEP = 5;': 1,
-            'int ROW_SEP = 0;': 5,
+            'int ROW_SEP = 0;': 50,
             'int ROW_SEP = 10;': 1
         })
         self.addChoice('rogueRowIndex', {
-            'int ROGUE_ROW_INDEX = -1;': 3,  # No rogue row
+            'int ROGUE_ROW_INDEX = -1;': 20,  # No rogue row
             'int ROGUE_ROW_INDEX = 1;': 1,  # Rogue row at position 1
             'int ROGUE_ROW_INDEX = 2;': 1  # Rogue row at position 2
         })
         self.addChoice('rogueDiagonalIndex', {
-            'int ROGUE_DIAGONAL_INDEX = -1;': 3,  # No rogue diagonal
+            'int ROGUE_DIAGONAL_INDEX = -1;': 20,  # No rogue diagonal
             'int ROGUE_DIAGONAL_INDEX = 1;': 1,  # Rogue diagonal at position 1
             'int ROGUE_DIAGONAL_INDEX = 2;': 1  # Rogue diagonal at position 2
         })
@@ -153,11 +144,11 @@ class InitializeBrickParametersRectangleRows(Decision):
         })
         self.addChoice('isRogueRow', {
             'boolean isRogueRow = true;': 1,
-            'boolean isRogueRow = false;': 2
+            'boolean isRogueRow = false;': 10
         })
         self.addChoice('isRogueDiagonal', {
             'boolean isRogueDiagonal = true;': 1,
-            'boolean isRogueDiagonal = false;': 2
+            'boolean isRogueDiagonal = false;': 10
         })
 
     def render(self):
@@ -187,7 +178,7 @@ class BrickColorRectangle(Decision):
             'Color.RED': 1,
             'Color.ORANGE': 1,
             'Color.MAGENTA': 1,
-            'Color.BLACK': 5
+            'Color.BLACK': 60
         })
 
     def render(self):
