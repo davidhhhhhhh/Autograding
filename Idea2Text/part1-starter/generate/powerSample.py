@@ -6,12 +6,12 @@ GRAMMAR_PATH = 'grammars/powerGrading_full'
 if __name__ == '__main__':
     sampler = ideaToText.Sampler(GRAMMAR_PATH)
 
-    with open('power_grading_5000.csv', 'w', newline='') as csvfile:
+    with open('power_grading_50000.csv', 'w', newline='') as csvfile:
         fieldnames = ['text', 'choices']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
-        for i in range(5000):
+        for i in range(50000):
             sample = sampler.singleSample()
             text = sample['text']
             choices = sample['choices']
