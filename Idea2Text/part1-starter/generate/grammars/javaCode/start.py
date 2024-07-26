@@ -24,7 +24,7 @@ class Start(Decision):
         # Mapping choices to their corresponding expanded code
         choice_mapping = {
             'correct': 'Correct',
-            'false': 'False'
+            'false': 'Incorrect'
         }
 
         strategy = self.getChoice('correctness')

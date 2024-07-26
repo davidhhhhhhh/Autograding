@@ -1,18 +1,18 @@
 from ideaToText import Decision
 
 
-class Correct(Decision):
+class Incorrect(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
             '''int lcm(int a, int b) {{
-    {LcmPartCorrect}
+    {LcmPartIncorrect}
 }}
 
 int gcd(int a, int b){{
-    {GcdPartCorrect}
+    {GcdPartIncorrect}
 }}''': 5,
             '''int lcm(int a, int b) {{
-    {OneFunctionCorrect}
+    {OneFunctionIncorrect}
 }}''': 1
         })
 
@@ -22,15 +22,15 @@ int gcd(int a, int b){{
         return self.getChoice('codeStructure')
 
 
-class LcmPartCorrect(Decision):
+class LcmPartIncorrect(Decision):
     def registerChoices(self):
         self.addChoice('lcmPart', {
             '''int c = 0;
-    c = (a*b)/ gcd(a,b);
+    c = (a*b) % gcd(a,b);
     return c;''': 1,
-            ''' return (a*b)/gcd(a,b);''': 2,
-            '''return a*b / gcd(a,b);''': 5,
-            '''output =  a/gcd(a,b)*b;
+            ''' return (a*b)*gcd(a,b);''': 2,
+            '''return a*b - gcd(a,b);''': 5,
+            '''output =  a/(gcd(a,b)*b);
             return output;''': 1
         })
 
@@ -40,24 +40,24 @@ class LcmPartCorrect(Decision):
         return self.getChoice('lcmPart')
 
 
-class GcdPartCorrect(Decision):
+class GcdPartIncorrect(Decision):
     def registerChoices(self):
         self.addChoice('gcdPart', {
+            '''
+    int r = a % b;
+
+    if (r == 0) {{
+        return b;
+    }} else {{
+        return gcd(r, b);
+    }}''': 5,
             '''if (a < b) {{
         int tmp = a;
         a = b;
         b = tmp;
     }}
     int r = a % b;
-    
-    if (r == 0) {{
-        return b;
-    }} else {{
-        return gcd(r, b);
-    }}''': 5,
-            '''if (a < b) return gcd(b, a);
-    int r = a % b;
-    if (r == 0) return b;
+    if (r == 0) return r;
     else return gcd(r, b);''': 1,
             '''int tmp;
         //Swap the numbers so a >= b
@@ -74,7 +74,7 @@ class GcdPartCorrect(Decision):
                 a = b;
                 b = tmp;
         }}
-        return a;''': 1
+        return b;''': 1
         })
 
     def render(self):
@@ -83,7 +83,7 @@ class GcdPartCorrect(Decision):
         return self.getChoice('gcdPart')
 
 
-class OneFunctionCorrect(Decision):
+class OneFunctionIncorrect(Decision):
     def registerChoices(self):
         self.addChoice('OneFunction', {
             '''int a1 = a;
@@ -96,7 +96,7 @@ class OneFunctionCorrect(Decision):
             a1 = b1; 
             b1 = r;
             r = a1 % b1;}}
-            int x=a*b/b1;
+            int x=a*b1/b;
             return x;''': 1,
             '''int a1=a;
     int b1=b;
@@ -113,7 +113,7 @@ class OneFunctionCorrect(Decision):
         b = r;
         }}
     }}
-    int x=a1*b1/b;
+    int x=a*b/b1;
     return x;''': 1,
         })
 
