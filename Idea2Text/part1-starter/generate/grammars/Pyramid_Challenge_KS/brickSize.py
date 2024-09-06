@@ -3,42 +3,23 @@ from ideaToText import Decision
 
 class BrickSize(Decision):
     def registerChoices(self):
-        self.addChoice('correctness', {
-            '{CorrectSize}': 20,
-            '{FalseSize}': 1
+        self.addChoice('SizeCorrectness', {
+            'CorrectSize': 20,
+            'FalseSize': 1
         })
 
     def render(self):
-        # if the string you return has a Decision name
-        # in brackets, the sampler will auto expand itß
-        return self.getChoice('correctness')
-
-
-class CorrectSize(Decision):
-    def registerChoices(self):
-        self.addChoice('size_params', {
-            '''int brick_width = 30;
+        choice_mapping = {'CorrectSize': '''int brick_width = 30;
                int brick_height = 10;
                int BRICK_WIDTH = brick_width;
-               int BRICK_HEIGHT = brick_height;''': 1
-        })
+               int BRICK_HEIGHT = brick_height;''',
 
-    def render(self):
-        # if the string you return has a Decision name
-        # in brackets, the sampler will auto expand itß
-        return self.getChoice('size_params')
-
-
-class FalseSize(Decision):
-    def registerChoices(self):
-        self.addChoice('size_params', {
-            '''int brick_width = 30;
-               int brick_height = 30;
+                          'FalseSize': '''//
+               int brick_width = 30 + random.nextInt(20);
+               int brick_height = 30 - random.nextInt(20);
                int BRICK_WIDTH = brick_width;
-               int BRICK_HEIGHT = brick_height;''': 1
-        })
+               int BRICK_HEIGHT = brick_height;'''}
 
-    def render(self):
-        # if the string you return has a Decision name
-        # in brackets, the sampler will auto expand itß
-        return self.getChoice('size_params')
+        choice = self.getChoice('SizeCorrectness')
+        output = choice_mapping[choice]
+        return output

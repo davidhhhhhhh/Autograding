@@ -4,8 +4,14 @@ from ideaToText import Decision
 class Serious(Decision):
     def registerChoices(self):
         self.addChoice('codeStructure', {
-            '''import acm.graphics.*;
+            'common_structure': 1
+        })
+
+    def render(self):
+        choice_mapping = {
+            'common_structure': '''import acm.graphics.*;
 import java.awt.Color;
+import java.util.Random;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -23,6 +29,9 @@ public class DrawStructure{{
         // Create an off-screen GCanvas
         GCanvas canvas = new GCanvas();
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
+        
+        // Initiate new random
+        Random random = new Random();
 
         // Initialize brick size
         {BrickSize}
@@ -61,8 +70,8 @@ public class DrawStructure{{
                         e.printStackTrace();
                     }}
                 }}            
-            }}''': 1
-        })
-
-    def render(self):
-        return self.getChoice('codeStructure')
+            }}''',
+        }
+        choice = self.getChoice('codeStructure')
+        output = choice_mapping[choice]
+        return output

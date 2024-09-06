@@ -1,5 +1,6 @@
 from ideaToText import Decision
 
+
 # "Start" is a special decision which is invoked by the Sampler
 # to generate a single sample.
 class Start(Decision):

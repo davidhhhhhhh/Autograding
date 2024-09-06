@@ -4,23 +4,27 @@ from ideaToText import Decision
 class NumRowsInVLoop(Decision):
     def registerChoices(self):
         self.addChoice('VLoopExistence', {
-            '''// Only one single row, no vertical loop
+            'SingleRow': 1,
+
+            'MultipleRows': 10
+        })
+
+    def render(self):
+        choice_mapping = {'SingleRow': '''// Only one single row, no vertical loop
                for (int i = 0; i < num_bricks_base; i++) {{
                    // Single Row, no over lap 
                    {BrickSingleRowSpacing}
                    
                    // Draw a bricks
                    GRect brick = new GRect(x, start_Y, brick_width, brick_height);
+                   {SetColorFilled}
                    canvas.add(brick);
-               }}''': 1,
+               }}''',
 
-            '''// Vertical loop exist
-               for (int i = 0; i < num_bricks_base; i++) {{
+                          'MultipleRows': '''// Vertical loop exist
+               for (int i = 0; i < nRows; i++) {{
                     // Determine # of Bricks per row
                     {NumBricksPerRow}
-                    
-                    // Determine Number of Rows
-                    {TotalRows}
                     
                     // Determine rowY value
                     {BrickYSpacing}                  
@@ -29,53 +33,49 @@ class NumRowsInVLoop(Decision):
                     {RowOffset}
                     
                     // Draw a single row
-                    for (int j = 0; j < nRows; j++) {{
+                    for (int j = 0; j < nBricks; j++) {{
                         // Determine horizontal offset
                         {BrickMultiRowSpacing}
                         GRect brick = new GRect(x, rowY, brick_width, brick_height);
+                        {SetColorFilled}
                         canvas.add(brick);
                     }}
-                }}''': 10
-        })
+                }}'''}
 
-    def render(self):
-        # if the string you return has a Decision name
-        # in brackets, the sampler will auto expand itß
-        return self.getChoice('VLoopExistence')
+        choice = self.getChoice('VLoopExistence')
+        output = choice_mapping[choice]
+        return output
 
 
 class NumBricksPerRow(Decision):
     def registerChoices(self):
         self.addChoice('NumBrickPerRow', {
-            '''// Correct nBricks per row
-                int nBricks = num_bricks_base - i;''': 10,
+            'RightNumBricksPerRow': 10,
 
-            '''// Constant nBricks per row
-                int nBricks = num_bricks_base;''': 1,
+            'ConstantNumBricksPerRow': 1,
 
-            '''// Random nBricks per row
-                int nBricks = num_bricks_base - 2 * i;''': 1,
+            'RamLessBricksPerRow': 1,
+
+            'RamMoreBricksPerRow': 1,
         })
 
     def render(self):
-        # if the string you return has a Decision name
-        # in brackets, the sampler will auto expand itß
-        return self.getChoice('NumBrickPerRow')
+        choice_mapping = {'RightNumBricksPerRow': '''// Correct nBricks per row
+                int nBricks = num_bricks_base - i;''',
 
+                          'ConstantNumBricksPerRow': '''// Constant nBricks per row
+                int nBricks = num_bricks_base;''',
 
-class TotalRows(Decision):
-    def registerChoices(self):
-        self.addChoice('NumRows', {
-            '''// Correct number of rows
-                int nRows = nBricks;
-               ''': 5,
+                          'RamLessBricksPerRow': '''// Random less nBricks per row
+                //
+                int nBricks = num_bricks_base - random.nextInt(num_bricks_base) + 1;''',
 
-            '''// Incorrect number of rows
-                int nRows = 4;''': 1,
-        })
+                          'RamMoreBricksPerRow': '''// Random more nBricks per row
+                //
+                int nBricks = num_bricks_base + random.nextInt(num_bricks_base) + 1;'''
+                          }
 
-    def render(self):
-        # if the string you return has a Decision name
-        # in brackets, the sampler will auto expand itß
-        return self.getChoice('NumRows')
+        choice = self.getChoice('NumBrickPerRow')
+        output = choice_mapping[choice]
+        return output
 

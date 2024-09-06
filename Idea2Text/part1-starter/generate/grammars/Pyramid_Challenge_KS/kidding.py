@@ -24,15 +24,6 @@ public class DrawStructure{{
         GCanvas canvas = new GCanvas();
         canvas.setSize(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT);
 
-        // Initialize brick size
-        {BrickSize}
-
-        // Horizontal Loop
-        {HorizontalLoop}
-
-        // Vertical Loop
-        {VerticalLoop}
-
         // Draw the inner canvas boundary
         GRect innerCanvasBoundary = new GRect((OUTER_CANVAS_WIDTH - INNER_CANVAS_WIDTH) / 2,
                                                (OUTER_CANVAS_HEIGHT - INNER_CANVAS_HEIGHT) / 2,
