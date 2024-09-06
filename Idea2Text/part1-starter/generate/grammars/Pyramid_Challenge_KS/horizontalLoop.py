@@ -122,7 +122,8 @@ class TotalRows(Decision):
         output = choice_mapping[choice]
         return output
 
-    class StartingPointVec(Decision):
+
+class StartingPointVec(Decision):
         def registerChoices(self):
             self.addChoice('StartingPointVec', {
                 'FalseStartPoint': 1,
