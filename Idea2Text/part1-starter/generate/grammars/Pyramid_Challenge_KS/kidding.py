@@ -45,12 +45,12 @@ public class DrawStructure{{
 
                     // Generate a unique filename using a timestamp
                     String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-                    String filename = "perfect_" + timestamp + ".png";
+                    String filename = "kidding_" + timestamp + ".png";
 
                     try {{
                         // Write the buffered image to a file
                         ImageIO.write(image, "png", new File(filename));
-                        System.out.println("Image saved as " + filename);
+                        System.out.println("Kidding Image saved as " + filename);
                     }} catch (Exception e) {{
                         e.printStackTrace();
                     }}

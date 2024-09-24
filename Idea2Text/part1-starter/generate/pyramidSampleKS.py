@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     data = []
 
-    for i in range(1000):
+    for i in range(10000):
         sample = sampler.singleSample()
         text = sample['text']
         choices = sample['choices']
@@ -18,5 +18,5 @@ if __name__ == '__main__':
 
         data.append({'text': text, 'choices': choices})
 
-    with open('pyramid_ks_1000.json', 'w') as jsonfile:
+    with open('pyramid_ks_10000.json', 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)

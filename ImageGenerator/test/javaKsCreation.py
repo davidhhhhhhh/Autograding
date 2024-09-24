@@ -4,7 +4,7 @@ import re
 import csv
 
 # Load the JSON file
-with open('pyramid_ks_1000.json') as f:
+with open('pyramid_ks_10000.json') as f:
     data = json.load(f)
 
 # Directory to save Java files

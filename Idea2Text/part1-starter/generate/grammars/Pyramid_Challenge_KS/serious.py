@@ -47,9 +47,9 @@ public class DrawStructure{{
         canvas.add(innerCanvasBoundary);
 
         // Save the canvas as an image
-        saveCanvasAsImage(canvas);
+        saveCanvasAsImage(canvas, args[0]);
     }}
-    private static void saveCanvasAsImage(GCanvas canvas) {{
+    private static void saveCanvasAsImage(GCanvas canvas, String imageDir) {{
                     BufferedImage image = new BufferedImage(OUTER_CANVAS_WIDTH, OUTER_CANVAS_HEIGHT, BufferedImage.TYPE_INT_RGB);
                     Graphics g = image.getGraphics();
                     g.setColor(Color.WHITE);
@@ -64,8 +64,9 @@ public class DrawStructure{{
 
                     try {{
                         // Write the buffered image to a file
-                        ImageIO.write(image, "png", new File(filename));
-                        System.out.println("Image saved as " + filename);
+                        File outputfile = new File(imageDir, filename);
+                        ImageIO.write(image, "png", outputfile);
+                        System.out.println("Image saved as " + outputfile.getPath());
                     }} catch (Exception e) {{
                         e.printStackTrace();
                     }}
