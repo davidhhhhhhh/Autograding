@@ -3,11 +3,10 @@
 
 # Ignore system-specific files
 .DS_Store
-Thumbs.db
 
 # Ignore setup
-*.egg-info/
+research_2024.egg-info/
 
 # Ignore data due to large size
-Data/pyramid_by_milestone
-Data/pyramid_by_kc
+data/pyramid_by_milestone
+data/pyramid_by_kc

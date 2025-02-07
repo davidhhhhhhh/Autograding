@@ -18,5 +18,5 @@ if __name__ == '__main__':
 
         data.append({'text': text, 'choices': choices})
 
-    with open('lcm_500.json', 'w') as jsonfile:
+    with open('../../data/lcm/lcm_500.json', 'w') as jsonfile:
         json.dump(data, jsonfile, indent=4)
