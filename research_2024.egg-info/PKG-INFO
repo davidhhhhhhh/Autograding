@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: research-2024
+Version: 0.1.0
+Summary: A project for Student Simulator and Idea to Text conversion.
+Author: Your Name
+Author-email: your.email@example.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# research_2024

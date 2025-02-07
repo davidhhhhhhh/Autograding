@@ -1,0 +1,13 @@
+# Ignore PyCharm files
+.idea/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore setup
+*.egg-info/
+
+# Ignore data due to large size
+Data/pyramid_by_milestone
+Data/pyramid_by_kc
